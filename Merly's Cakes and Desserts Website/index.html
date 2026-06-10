@@ -271,8 +271,8 @@
     }
     @media(max-width:560px){.gallery-grid{grid-template-columns:1fr 1fr}}
     .gallery-card{aspect-ratio:1;position:relative;overflow:hidden;cursor:pointer}
-    .gc-bg{position:absolute;inset:0;transition:transform .6s ease}
-    .gallery-card:hover .gc-bg{transform:scale(1.06)}
+    .gallery-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+    .gallery-card:hover img{transform:scale(1.06)}
     .gc-1{background:linear-gradient(135deg,#c8566b 0%,#8b2d45 100%)}
     .gc-2{background:linear-gradient(135deg,#c9913c 0%,#7a5010 100%)}
     .gc-3{background:linear-gradient(135deg,#3d1424 0%,#c8566b 100%)}
@@ -661,69 +661,45 @@
       </div>
       <div class="gallery-grid">
         <div class="gallery-card reveal" role="img" aria-label="Custom birthday cake">
-          <div class="gc-bg gc-1">
-            <div class="gc-icon" aria-hidden="true">
-              <svg width="56" height="56" aria-hidden="true" focusable="false"><use href="#ico-cake"/></svg>
-            </div>
-          </div>
+          <img src="images/gallery-1.jpg" alt="Custom birthday cake with pink drip icing and candles" loading="lazy">
           <div class="gc-overlay">
             <div class="gc-label">Birthday Cakes</div>
             <div class="gc-sub">Custom designs for every age</div>
           </div>
         </div>
         <div class="gallery-card reveal" role="img" aria-label="Mousse cake with mirror glaze">
-          <div class="gc-bg gc-2">
-            <div class="gc-icon" aria-hidden="true">
-              <svg width="56" height="56" aria-hidden="true" focusable="false"><use href="#ico-sparkle"/></svg>
-            </div>
-          </div>
+          <img src="images/gallery-2.jpg" alt="Chocolate mousse cake with mirror glaze and gold star decorations" loading="lazy">
           <div class="gc-overlay">
             <div class="gc-label">Mousse Cakes</div>
             <div class="gc-sub">Silky smooth, mirror-glazed</div>
           </div>
         </div>
-        <div class="gallery-card reveal" role="img" aria-label="Elegant wedding cake">
-          <div class="gc-bg gc-3">
-            <div class="gc-icon" aria-hidden="true">
-              <svg width="56" height="56" aria-hidden="true" focusable="false"><use href="#ico-flower"/></svg>
-            </div>
-          </div>
+        <div class="gallery-card reveal" role="img" aria-label="Elegant three-tier wedding cake">
+          <img src="images/gallery-3.jpg" alt="Elegant white three-tier wedding cake with floral decorations" loading="lazy">
           <div class="gc-overlay">
             <div class="gc-label">Wedding Cakes</div>
             <div class="gc-sub">Elegant multi-tier designs</div>
           </div>
         </div>
-        <div class="gallery-card reveal" role="img" aria-label="Decorated cupcakes">
-          <div class="gc-bg gc-4">
-            <div class="gc-icon" aria-hidden="true">
-              <svg width="56" height="56" aria-hidden="true" focusable="false"><use href="#ico-heart"/></svg>
-            </div>
-          </div>
+        <div class="gallery-card reveal" role="img" aria-label="Artistic celebration cake">
+          <img src="images/gallery-4.jpg" alt="Two-tier celebration cake with purple and white brushstroke design and gold details" loading="lazy">
           <div class="gc-overlay">
-            <div class="gc-label">Cupcakes</div>
-            <div class="gc-sub">Mini sweet celebrations</div>
+            <div class="gc-label">Celebration Cakes</div>
+            <div class="gc-sub">Artistic designs, any occasion</div>
           </div>
         </div>
         <div class="gallery-card reveal" role="img" aria-label="Fresh pastries and desserts">
-          <div class="gc-bg gc-5">
-            <div class="gc-icon" aria-hidden="true">
-              <svg width="56" height="56" aria-hidden="true" focusable="false"><use href="#ico-star"/></svg>
-            </div>
-          </div>
+          <img src="images/gallery-5.jpg" alt="Assortment of fresh pastries including eclairs, mille-feuille and tarts" loading="lazy">
           <div class="gc-overlay">
             <div class="gc-label">Pastries</div>
             <div class="gc-sub">Fresh-baked daily</div>
           </div>
         </div>
-        <div class="gallery-card reveal" role="img" aria-label="Corporate event cake">
-          <div class="gc-bg gc-6">
-            <div class="gc-icon" aria-hidden="true">
-              <svg width="56" height="56" aria-hidden="true" focusable="false"><use href="#ico-gift"/></svg>
-            </div>
-          </div>
+        <div class="gallery-card reveal" role="img" aria-label="Decorated cupcakes">
+          <img src="images/gallery-6.jpg" alt="Assorted cupcakes with chocolate, vanilla and caramel frosting" loading="lazy">
           <div class="gc-overlay">
-            <div class="gc-label">Event Cakes</div>
-            <div class="gc-sub">Corporate &amp; celebrations</div>
+            <div class="gc-label">Cupcakes</div>
+            <div class="gc-sub">Mini sweet celebrations</div>
           </div>
         </div>
       </div>
