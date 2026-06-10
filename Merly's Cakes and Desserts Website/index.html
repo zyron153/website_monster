@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Merly's Cakes and Desserts | Best Cakes in Accra, Ghana</title>
+  <meta name="description" content="Merly's Cakes and Desserts — Accra's best custom cakes, mousse cakes, and desserts. Moist, fluffy, and crafted with love for every special occasion in Ghana." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Merly's Cakes and Desserts | Best Cakes in Accra, Ghana" />
+  <meta property="og:description" content="Custom cakes, mousse cakes, and desserts made with love in Accra, Ghana. Quality cakes at affordable prices for every special moment." />
+  <meta property="og:url" content="https://merlyscakes.com" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Merly's Cakes and Desserts | Best Cakes in Accra" />
+  <meta name="twitter:description" content="Custom cakes, mousse cakes and desserts. Moist, fluffy, made with love — Accra, Ghana." />
+  <!-- GA4: replace G-XXXXXXXXXX with your Measurement ID -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <style>
+    /* ===== VARIABLES ===== */
+    :root {
+      --nav-h: 72px;
+      --c-rose:      #c8566b;
+      --c-rose-lt:   #e8748a;
+      --c-rose-dim:  rgba(200,86,107,.13);
+      --c-cream:     #fdf6ee;
+      --c-choco:     #1a0f0a;
+      --c-choco-mid: #3d1424;
+      --c-gold:      #c9913c;
+      --c-gold-dim:  rgba(201,145,60,.13);
+      --c-border:    rgba(200,86,107,.18);
+      --c-surface:   #ffffff;
+      --c-surface2:  #fdf6ee;
+      --c-text:      #1a0f0a;
+      --c-muted:     #7a5060;
+      --transition:  .35s cubic-bezier(.4,0,.2,1);
+      scroll-padding-top: var(--nav-h);
+    }
+    [data-theme="dark"] {
+      --c-surface:  #1a0f0a;
+      --c-surface2: #231510;
+      --c-text:     #fdf6ee;
+      --c-muted:    #b07880;
+      --c-border:   rgba(200,86,107,.22);
+    }
+
+    /* ===== RESET ===== */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-size:16px}
+    body{
+      font-family:'DM Sans',sans-serif;font-weight:400;
+      background:var(--c-surface);color:var(--c-text);
+      line-height:1.7;overflow-x:hidden;
+      transition:background var(--transition),color var(--transition);
+    }
+    img{display:block;max-width:100%}
+    a{color:inherit;text-decoration:none}
+    button{font-family:inherit;cursor:pointer;border:none;background:none}
+
+    /* ===== ACCESSIBILITY ===== */
+    .skip-link{
+      position:absolute;top:-999px;left:1rem;
+      background:var(--c-rose);color:#fff;
+      padding:.5rem 1rem;z-index:10000;font-size:.85rem;letter-spacing:.05em;
+    }
+    .skip-link:focus{top:1rem}
+    :focus-visible{outline:2px solid var(--c-rose);outline-offset:3px}
+    @media(prefers-reduced-motion:reduce){
+      .hero-eyebrow,.hero-title,.hero-sub,.hero-cta{opacity:1!important;transform:none!important}
+      *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+    }
+
+    /* ===== TYPE ===== */
+    h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:600;line-height:1.1;letter-spacing:-.01em}
+    .eyebrow{
+      font-family:'DM Sans',sans-serif;font-size:.72rem;font-weight:600;
+      letter-spacing:.18em;text-transform:uppercase;color:var(--c-rose);
+    }
+
+    /* ===== NAV ===== */
+    #nav{
+      position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 clamp(1.5rem,5vw,4rem);
+      transition:background var(--transition),box-shadow var(--transition);
+    }
+    #nav.scrolled{background:var(--c-choco);box-shadow:0 1px 24px rgba(0,0,0,.3)}
+    .nav-logo{
+      font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;
+      color:var(--c-cream);letter-spacing:.02em;
+    }
+    .nav-logo span{color:var(--c-gold)}
+    .nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none}
+    .nav-links a{
+      font-size:.8rem;font-weight:500;letter-spacing:.08em;
+      color:rgba(253,246,238,.75);transition:color var(--transition);
+    }
+    .nav-links a:hover{color:var(--c-gold)}
+    .nav-actions{display:flex;align-items:center;gap:.85rem}
+    .btn-theme{
+      width:44px;height:44px;display:flex;align-items:center;justify-content:center;
+      color:var(--c-cream);border-radius:50%;transition:color var(--transition);
+    }
+    .btn-theme:hover{color:var(--c-gold)}
+    .btn-nav-cta{
+      padding:.55rem 1.4rem;background:var(--c-rose);color:var(--c-cream);
+      font-size:.76rem;font-weight:600;letter-spacing:.08em;
+      transition:background var(--transition);
+    }
+    .btn-nav-cta:hover{background:var(--c-rose-lt)}
+    .btn-hamburger{
+      display:none;width:44px;height:44px;
+      align-items:center;justify-content:center;color:var(--c-cream);
+    }
+    @media(max-width:768px){
+      .nav-links,.btn-nav-cta{display:none}
+      .btn-hamburger{display:flex}
+    }
+
+    /* ===== MOBILE MENU ===== */
+    #mobile-menu{
+      position:fixed;inset:0;z-index:999;background:var(--c-choco);
+      display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;
+      opacity:0;pointer-events:none;transition:opacity var(--transition);
+    }
+    #mobile-menu.open{opacity:1;pointer-events:all}
+    #mobile-menu .menu-link{
+      font-family:'Playfair Display',serif;font-size:1.9rem;
+      color:var(--c-cream);transition:color var(--transition);
+    }
+    #mobile-menu .menu-link:hover{color:var(--c-rose)}
+    .mobile-close{
+      position:absolute;top:1.5rem;right:1.5rem;
+      width:44px;height:44px;display:flex;align-items:center;justify-content:center;
+      color:var(--c-cream);
+    }
+
+    /* ===== HERO ===== */
+    #hero{
+      position:relative;
+      margin-top:var(--nav-h);
+      height:calc(100vh - var(--nav-h));
+      height:calc(100svh - var(--nav-h));
+      min-height:calc(680px - var(--nav-h));
+      display:flex;align-items:center;justify-content:center;
+      overflow:clip;
+      background:linear-gradient(160deg,#1a0f0a 0%,#3d1424 35%,#8b2d45 65%,#c8566b 100%);
+    }
+    #hero-canvas{
+      position:absolute;inset:0;width:100%;height:100%;pointer-events:none;
+    }
+    #hero::after{
+      content:'';position:absolute;inset:0;
+      background:
+        radial-gradient(ellipse at 60% 30%,rgba(201,145,60,.1) 0%,transparent 55%),
+        linear-gradient(to bottom,transparent 45%,rgba(26,15,10,.65) 100%);
+    }
+    #hero-content{
+      position:relative;z-index:1;text-align:center;
+      padding:0 clamp(1.5rem,6vw,5rem);max-width:800px;
+    }
+    .hero-eyebrow{
+      display:inline-block;margin-bottom:1.25rem;
+      font-size:.72rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+      color:var(--c-gold);
+    }
+    .hero-title{
+      font-family:'Playfair Display',serif;font-weight:700;
+      font-size:clamp(3rem,min(9vw,9.5vh),7.5rem);
+      letter-spacing:-.02em;line-height:1.06;
+      color:var(--c-cream);margin-bottom:1.25rem;
+    }
+    .hero-title em{color:var(--c-rose-lt);font-style:italic}
+    .hero-sub{
+      font-size:clamp(.92rem,1.8vw,1.08rem);font-weight:300;
+      color:rgba(253,246,238,.72);max-width:500px;margin:0 auto 2.25rem;
+    }
+    .hero-cta{
+      display:inline-flex;align-items:center;gap:.65rem;
+      padding:.95rem 2.2rem;
+      background:var(--c-rose);color:var(--c-cream);
+      font-size:.82rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+      transition:background var(--transition),transform var(--transition);
+    }
+    .hero-cta:hover{background:var(--c-rose-lt);transform:translateY(-2px)}
+    .hero-scroll{
+      position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
+      display:flex;flex-direction:column;align-items:center;gap:.4rem;
+      color:rgba(253,246,238,.3);font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;
+    }
+    .scroll-line{
+      width:1px;height:48px;
+      background:linear-gradient(to bottom,rgba(201,145,60,.8),transparent);
+      animation:scrollPulse 2.1s ease-in-out infinite;
+    }
+    @keyframes scrollPulse{0%,100%{opacity:.25}50%{opacity:1}}
+
+    /* ===== SECTIONS ===== */
+    .section{padding:clamp(5rem,10vw,8rem) clamp(1.5rem,6vw,6rem)}
+    .section-inner{max-width:1200px;margin:0 auto}
+    .section-header{margin-bottom:3.5rem}
+    .section-header h2{font-size:clamp(1.9rem,3.8vw,3rem);margin-top:.75rem;margin-bottom:1rem}
+    .section-header p{font-size:.98rem;color:var(--c-muted);max-width:520px;line-height:1.7}
+    .section-header.center{text-align:center}
+    .section-header.center p{margin:0 auto}
+
+    /* Reveal */
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    /* ===== ABOUT ===== */
+    #about{background:var(--c-surface2)}
+    .about-grid{
+      display:grid;grid-template-columns:1fr 1fr;
+      gap:clamp(3rem,6vw,6rem);align-items:center;
+    }
+    @media(max-width:768px){.about-grid{grid-template-columns:1fr}}
+    .about-text h2{margin-bottom:1.5rem}
+    .about-text p{color:var(--c-muted);margin-bottom:1.2rem}
+    .btn-outline{
+      display:inline-flex;align-items:center;gap:.6rem;
+      margin-top:.5rem;padding:.75rem 1.75rem;
+      border:1.5px solid var(--c-rose);color:var(--c-rose);
+      font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+      transition:background var(--transition),color var(--transition);
+    }
+    .btn-outline:hover{background:var(--c-rose);color:var(--c-cream)}
+    .about-visual{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--c-border)}
+    .stat-box{
+      background:var(--c-surface);padding:2.5rem;text-align:center;
+      transition:background var(--transition);
+    }
+    .stat-box:hover{background:var(--c-rose-dim)}
+    .stat-num{
+      font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;
+      color:var(--c-rose);line-height:1;margin-bottom:.4rem;
+    }
+    .stat-label{font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--c-muted)}
+
+    /* ===== PRODUCTS ===== */
+    .products-grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:1px;background:var(--c-border);
+    }
+    .product-card{
+      background:var(--c-surface);padding:2.5rem 2rem;
+      position:relative;overflow:hidden;transition:background var(--transition);
+    }
+    .product-card::after{
+      content:'';position:absolute;bottom:0;left:0;
+      width:0;height:3px;background:var(--c-rose);transition:width .45s ease;
+    }
+    .product-card:hover::after{width:100%}
+    .product-card:hover{background:var(--c-surface2)}
+    .product-icon{
+      width:52px;height:52px;margin-bottom:1.5rem;
+      background:var(--c-rose-dim);border-radius:50%;
+      display:flex;align-items:center;justify-content:center;color:var(--c-rose);
+    }
+    .product-card h3{font-size:1.05rem;margin-bottom:.65rem}
+    .product-card p{font-size:.87rem;color:var(--c-muted);line-height:1.65}
+
+    /* ===== GALLERY ===== */
+    #gallery{background:var(--c-surface2)}
+    .gallery-grid{
+      display:grid;grid-template-columns:repeat(3,1fr);
+      gap:1px;background:var(--c-border);
+    }
+    @media(max-width:560px){.gallery-grid{grid-template-columns:1fr 1fr}}
+    .gallery-card{aspect-ratio:1;position:relative;overflow:hidden;cursor:pointer}
+    .gc-bg{position:absolute;inset:0;transition:transform .6s ease}
+    .gallery-card:hover .gc-bg{transform:scale(1.06)}
+    .gc-1{background:linear-gradient(135deg,#c8566b 0%,#8b2d45 100%)}
+    .gc-2{background:linear-gradient(135deg,#c9913c 0%,#7a5010 100%)}
+    .gc-3{background:linear-gradient(135deg,#3d1424 0%,#c8566b 100%)}
+    .gc-4{background:linear-gradient(135deg,#8b2d45 0%,#c9913c 100%)}
+    .gc-5{background:linear-gradient(135deg,#1a0f0a 0%,#8b5020 100%)}
+    .gc-6{background:linear-gradient(160deg,#c8566b 0%,#1a0f0a 100%)}
+    .gc-icon{
+      position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+      color:rgba(255,255,255,.3);
+    }
+    .gc-overlay{
+      position:absolute;inset:0;
+      background:linear-gradient(to top,rgba(26,15,10,.8) 0%,transparent 55%);
+      display:flex;flex-direction:column;justify-content:flex-end;
+      padding:1.5rem;opacity:0;transition:opacity var(--transition);
+    }
+    .gallery-card:hover .gc-overlay{opacity:1}
+    .gc-label{font-family:'Playfair Display',serif;font-size:1rem;color:var(--c-cream)}
+    .gc-sub{font-size:.75rem;color:rgba(253,246,238,.65);margin-top:.2rem}
+
+    /* ===== ORDER FORM ===== */
+    #order{background:var(--c-choco)}
+    #order .section-header.center h2{color:var(--c-cream)}
+    #order .section-header.center p{color:rgba(253,246,238,.5)}
+    .order-wrap{
+      max-width:780px;margin:0 auto;
+      background:rgba(253,246,238,.04);
+      border:1px solid rgba(200,86,107,.22);
+      padding:clamp(2rem,4vw,3.5rem);
+    }
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.25rem}
+    @media(max-width:600px){.form-row{grid-template-columns:1fr}}
+    .form-field{display:flex;flex-direction:column;gap:.4rem}
+    .form-field label{
+      font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+      color:rgba(253,246,238,.42);
+    }
+    .form-field input,.form-field select,.form-field textarea{
+      background:rgba(253,246,238,.05);
+      border:1px solid rgba(200,86,107,.18);
+      color:var(--c-cream);min-height:44px;
+      padding:.82rem 1rem;
+      font-family:'DM Sans',sans-serif;font-size:.88rem;
+      outline:none;transition:border-color var(--transition);
+    }
+    .form-field input::placeholder,.form-field textarea::placeholder{color:rgba(253,246,238,.22)}
+    .form-field input:focus,.form-field select:focus,.form-field textarea:focus{border-color:var(--c-rose)}
+    .form-field select{appearance:none;cursor:pointer}
+    .form-field select option{background:#1a0f0a;color:var(--c-cream)}
+    .form-field textarea{resize:vertical;min-height:100px}
+    .form-field-full{grid-column:1/-1}
+    .btn-primary{
+      margin-top:1.5rem;padding:1rem 2.5rem;min-height:44px;
+      background:var(--c-rose);color:var(--c-cream);
+      font-size:.82rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+      transition:background var(--transition),transform var(--transition);
+    }
+    .btn-primary:hover{background:var(--c-rose-lt);transform:translateY(-2px)}
+    .btn-primary:disabled{opacity:.55;cursor:not-allowed;transform:none}
+    #form-success{
+      margin-top:1.5rem;padding:1rem 1.5rem;
+      border:1px solid rgba(200,86,107,.35);color:var(--c-rose);font-size:.87rem;
+    }
+
+    /* ===== CONTACT ===== */
+    #contact{background:var(--c-surface2)}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,6vw,5rem)}
+    @media(max-width:768px){.contact-grid{grid-template-columns:1fr}}
+    .contact-item{display:flex;align-items:flex-start;gap:1rem;margin-bottom:2rem}
+    .contact-icon{width:20px;height:20px;flex-shrink:0;margin-top:.15rem;color:var(--c-rose)}
+    .contact-item h4{
+      font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+      color:var(--c-muted);margin-bottom:.25rem;
+    }
+    .contact-item p,.contact-item a{font-size:.95rem;color:var(--c-text);transition:color var(--transition)}
+    .contact-item a:hover{color:var(--c-rose)}
+    .map-embed{width:100%;height:360px;border:1px solid var(--c-border);filter:saturate(.8)}
+    .btn-wa{
+      display:inline-flex;align-items:center;gap:.65rem;
+      padding:.85rem 1.75rem;background:#25D366;color:#fff;
+      font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+      min-height:44px;transition:background var(--transition);
+    }
+    .btn-wa:hover{background:#1ebe5d}
+
+    /* ===== FOOTER ===== */
+    #footer{
+      background:var(--c-choco);
+      padding:clamp(3rem,6vw,5rem) clamp(1.5rem,6vw,4rem);
+    }
+    .footer-grid{
+      max-width:1200px;margin:0 auto;
+      display:grid;grid-template-columns:2fr 1fr 1fr;
+      gap:3rem;margin-bottom:2.5rem;
+    }
+    @media(max-width:768px){.footer-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:480px){.footer-grid{grid-template-columns:1fr}}
+    .footer-brand p{font-size:.83rem;color:rgba(253,246,238,.38);line-height:1.65;max-width:280px;margin-top:.75rem}
+    .footer-social{display:flex;gap:.6rem;margin-top:1.25rem}
+    .footer-social a{
+      width:36px;height:36px;border:1px solid rgba(200,86,107,.22);
+      display:flex;align-items:center;justify-content:center;
+      color:rgba(253,246,238,.42);transition:border-color var(--transition),color var(--transition);
+    }
+    .footer-social a:hover{border-color:var(--c-rose);color:var(--c-rose)}
+    .footer-col h4{
+      font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+      color:rgba(253,246,238,.3);margin-bottom:1rem;
+    }
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+    .footer-col ul a{font-size:.83rem;color:rgba(253,246,238,.42);transition:color var(--transition)}
+    .footer-col ul a:hover{color:var(--c-rose)}
+    .footer-bottom{
+      max-width:1200px;margin:0 auto;
+      padding-top:1.75rem;border-top:1px solid rgba(200,86,107,.12);
+      display:flex;justify-content:space-between;align-items:center;
+      flex-wrap:wrap;gap:1rem;
+    }
+    .footer-bottom p{font-size:.76rem;color:rgba(253,246,238,.28)}
+    .footer-bottom a{color:rgba(200,86,107,.5);transition:color var(--transition)}
+    .footer-bottom a:hover{color:var(--c-rose)}
+
+    /* ===== STICKY CTA ===== */
+    #sticky-cta{
+      position:fixed;bottom:0;left:0;right:0;z-index:900;
+      background:var(--c-rose);
+      display:flex;align-items:center;justify-content:center;gap:1rem;
+      padding:.8rem 1.5rem;
+      transform:translateY(100%);
+      transition:transform .4s cubic-bezier(.4,0,.2,1);
+    }
+    #sticky-cta.show{transform:translateY(0)}
+    #sticky-cta p{font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--c-cream)}
+    #sticky-cta a{
+      padding:.5rem 1.35rem;background:var(--c-cream);color:var(--c-choco);
+      font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+      white-space:nowrap;min-height:44px;
+      display:flex;align-items:center;transition:background var(--transition);
+    }
+    #sticky-cta a:hover{background:#fffdf9}
+    @media(max-width:480px){#sticky-cta p{display:none}}
+
+    /* ===== WHATSAPP ===== */
+    #wa-btn{
+      position:fixed;bottom:5.5rem;right:1.5rem;z-index:899;
+      width:54px;height:54px;background:#25D366;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      box-shadow:0 4px 20px rgba(37,211,102,.38);
+      opacity:0;pointer-events:none;
+      transition:opacity var(--transition),transform var(--transition);
+    }
+    #wa-btn.show{opacity:1;pointer-events:all}
+    #wa-btn:hover{transform:scale(1.08)}
+
+    /* ===== POPUP ===== */
+    #popup-overlay{
+      position:fixed;inset:0;z-index:2000;
+      background:rgba(26,15,10,.72);backdrop-filter:blur(4px);
+      display:flex;align-items:center;justify-content:center;
+      opacity:0;pointer-events:none;transition:opacity .3s ease;
+      padding:1.5rem;
+    }
+    #popup-overlay.open{opacity:1;pointer-events:all}
+    #popup-box{
+      background:var(--c-surface);max-width:440px;width:100%;
+      border:1px solid var(--c-border);
+      padding:clamp(2rem,5vw,3rem);position:relative;
+      transform:translateY(18px);transition:transform .3s ease;
+    }
+    #popup-overlay.open #popup-box{transform:translateY(0)}
+    .popup-close{
+      position:absolute;top:1rem;right:1rem;
+      width:44px;height:44px;display:flex;align-items:center;justify-content:center;
+      color:var(--c-muted);transition:color var(--transition);
+    }
+    .popup-close:hover{color:var(--c-text)}
+    #popup-box .eyebrow{margin-bottom:.75rem}
+    #popup-box h3{font-size:1.6rem;margin-bottom:.75rem}
+    #popup-box > p{font-size:.87rem;color:var(--c-muted);margin-bottom:1.75rem}
+    .popup-form{display:flex;flex-direction:column;gap:.75rem}
+    .popup-form input{
+      background:var(--c-surface2);border:1px solid var(--c-border);
+      padding:.82rem 1rem;min-height:44px;
+      font-family:'DM Sans',sans-serif;font-size:.88rem;
+      color:var(--c-text);outline:none;transition:border-color var(--transition);
+    }
+    .popup-form input:focus{border-color:var(--c-rose)}
+    .popup-form button{
+      padding:.9rem;min-height:44px;background:var(--c-rose);color:var(--c-cream);
+      font-family:'DM Sans',sans-serif;
+      font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+      transition:background var(--transition);
+    }
+    .popup-form button:hover{background:var(--c-rose-lt)}
+    .popup-skip{
+      text-align:center;margin-top:.65rem;
+      font-size:.76rem;color:var(--c-muted);cursor:pointer;
+      transition:color var(--transition);
+    }
+    .popup-skip:hover{color:var(--c-rose)}
+  </style>
+</head>
+<body data-theme="light">
+
+<!-- SVG SPRITE -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="ico-cake" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-8H4v8"/><rect x="2" y="13" width="20" height="2" rx="1"/><path d="M7 13V8m5 5V7m5 6V8"/><path d="M7 8a2 2 0 0 1 4 0m1-1a2 2 0 0 1 4 0"/></symbol>
+  <symbol id="ico-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></symbol>
+  <symbol id="ico-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+  <symbol id="ico-flower" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="5" r="2"/><circle cx="12" cy="19" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="7.05" cy="7.05" r="2"/><circle cx="16.95" cy="16.95" r="2"/><circle cx="16.95" cy="7.05" r="2"/><circle cx="7.05" cy="16.95" r="2"/></symbol>
+  <symbol id="ico-gift" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5" rx="1"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></symbol>
+  <symbol id="ico-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="1"/><path d="M9 22V12h6v10"/><path d="M9 7h1m4 0h1M9 11h1m4 0h1"/></symbol>
+  <symbol id="ico-sparkle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></symbol>
+  <symbol id="ico-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.26 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.17 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="ico-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="ico-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+  <symbol id="ico-ig" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></symbol>
+  <symbol id="ico-fb" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></symbol>
+  <symbol id="ico-threads" viewBox="0 0 24 24" fill="currentColor"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.5 12.068c0-3.516.85-6.37 2.495-8.423C5.845 1.341 8.598.16 12.18.136h.014c2.746.018 5.109.908 6.826 2.574 1.793 1.74 2.724 4.202 2.772 7.319l.008.408-.408.014a11.47 11.47 0 0 1-3.186-.332c-.007-.143-.016-.285-.024-.428-.16-2.842-1.834-4.476-4.51-4.499-2.895-.024-4.84 1.598-5.45 4.518-.306 1.463-.32 3.084.04 4.523.625 2.473 2.26 3.803 4.736 3.823 1.69.013 3.1-.488 4.088-1.464.736-.73 1.28-1.784 1.506-2.908l-4.11-.562.51-3.72 7.61 1.042-.048.278a10.786 10.786 0 0 1-.384 1.69c-.54 1.754-1.517 3.273-2.822 4.394-1.413 1.213-3.19 1.85-5.173 1.85z"/></symbol>
+  <symbol id="ico-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol>
+  <symbol id="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></symbol>
+  <symbol id="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></symbol>
+  <symbol id="ico-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></symbol>
+  <symbol id="ico-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+  <symbol id="ico-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
+  <symbol id="ico-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
+</svg>
+
+<!-- SKIP LINK -->
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- NAV -->
+<header>
+  <nav id="nav" role="navigation" aria-label="Main navigation">
+    <a href="/" class="nav-logo" aria-label="Merly's Cakes and Desserts — home">Merly's <span>Cakes</span></a>
+    <ul class="nav-links" role="list">
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Our Cakes</a></li>
+      <li><a href="#order">Order Now</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-theme" id="theme-toggle" aria-label="Switch to dark mode">
+        <svg aria-hidden="true" focusable="false" width="18" height="18"><use href="#ico-moon"/></svg>
+      </button>
+      <a href="#order" class="btn-nav-cta">Order a Cake</a>
+      <button class="btn-hamburger" id="hamburger-btn" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
+        <svg aria-hidden="true" focusable="false" width="22" height="22"><use href="#ico-menu"/></svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- MOBILE MENU -->
+<nav id="mobile-menu" aria-hidden="true" aria-label="Mobile navigation">
+  <button class="mobile-close" id="menu-close" aria-label="Close menu">
+    <svg aria-hidden="true" focusable="false" width="22" height="22"><use href="#ico-x"/></svg>
+  </button>
+  <a href="#about" class="menu-link">About</a>
+  <a href="#menu" class="menu-link">Our Cakes</a>
+  <a href="#order" class="menu-link">Order Now</a>
+  <a href="#contact" class="menu-link">Contact</a>
+  <a href="tel:+233202757533" style="font-size:.92rem;letter-spacing:.08em;color:var(--c-gold)">0202 757 533</a>
+</nav>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section id="hero" aria-labelledby="hero-heading">
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+    <div id="hero-content">
+      <span class="hero-eyebrow">Best Cakes in Accra &middot; Handcrafted with Love</span>
+      <h1 class="hero-title" id="hero-heading">
+        Every Bite<br/><em>Tells a Story</em>
+      </h1>
+      <p class="hero-sub">Custom cakes, mousse cakes and desserts — moist, fluffy, and unforgettable for every moment worth celebrating in Accra.</p>
+      <a href="#order" class="hero-cta">
+        Order Your Cake
+        <svg aria-hidden="true" focusable="false" width="16" height="16"><use href="#ico-arrow"/></svg>
+      </a>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">
+      <div class="scroll-line"></div>
+      <span>scroll</span>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section" aria-labelledby="about-heading">
+    <div class="section-inner">
+      <div class="about-grid reveal">
+        <div class="about-text">
+          <span class="eyebrow">Our Story</span>
+          <h2 id="about-heading">Baked with Heart,<br/>Made for Your Moments</h2>
+          <p>At Merly's Cakes and Desserts, every creation starts with one belief: a great cake can make any moment unforgettable. Based in Accra, we specialise in crafting moist, fluffy custom cakes and silky mousse desserts that taste as beautiful as they look.</p>
+          <p>From intimate birthday gatherings to grand weddings and corporate events, we combine quality ingredients with artisan techniques to deliver cakes that are both stunning and delicious — always at prices that feel as sweet as our treats.</p>
+          <a href="#order" class="btn-outline">
+            Place a Custom Order
+            <svg aria-hidden="true" focusable="false" width="14" height="14"><use href="#ico-arrow"/></svg>
+          </a>
+        </div>
+        <div class="about-visual">
+          <div class="stat-box">
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Custom Made</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">Moist</div>
+            <div class="stat-label">&amp; Fluffy Always</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">Accra</div>
+            <div class="stat-label">Ghana's Best</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">Any</div>
+            <div class="stat-label">Occasion</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS / MENU -->
+  <section id="menu" class="section" style="background:var(--c-surface2)" aria-labelledby="menu-heading">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <span class="eyebrow">What We Bake</span>
+        <h2 id="menu-heading">A Cake for<br/>Every Celebration</h2>
+        <p>From custom birthday showstoppers to silky mousse cakes and elegant wedding tiers — every order is crafted fresh, just for you.</p>
+      </div>
+      <div class="products-grid">
+        <article class="product-card reveal">
+          <div class="product-icon">
+            <svg aria-hidden="true" focusable="false" width="24" height="24"><use href="#ico-cake"/></svg>
+          </div>
+          <h3>Birthday Cakes</h3>
+          <p>Personalised, show-stopping birthday cakes in any design, flavour, and size. From single-tier to multi-tier — moist and fluffy every time.</p>
+        </article>
+        <article class="product-card reveal">
+          <div class="product-icon">
+            <svg aria-hidden="true" focusable="false" width="24" height="24"><use href="#ico-flower"/></svg>
+          </div>
+          <h3>Wedding &amp; Tiered Cakes</h3>
+          <p>Elegant multi-tier wedding cakes crafted to match your vision — from classic floral designs to modern fondant artistry.</p>
+        </article>
+        <article class="product-card reveal">
+          <div class="product-icon">
+            <svg aria-hidden="true" focusable="false" width="24" height="24"><use href="#ico-sparkle"/></svg>
+          </div>
+          <h3>Mousse Cakes</h3>
+          <p>Silky smooth mousse cakes with mirror-glaze finishes — chocolate, strawberry, mango and more. Light yet utterly indulgent.</p>
+        </article>
+        <article class="product-card reveal">
+          <div class="product-icon">
+            <svg aria-hidden="true" focusable="false" width="24" height="24"><use href="#ico-heart"/></svg>
+          </div>
+          <h3>Cupcakes &amp; Treats</h3>
+          <p>Beautifully decorated cupcakes and mini desserts — perfect for parties, baby showers, and sweet gift boxes.</p>
+        </article>
+        <article class="product-card reveal">
+          <div class="product-icon">
+            <svg aria-hidden="true" focusable="false" width="24" height="24"><use href="#ico-star"/></svg>
+          </div>
+          <h3>Desserts &amp; Pastries</h3>
+          <p>Handcrafted desserts and pastries baked fresh daily — from cinnamon rolls to cream puffs and everything in between.</p>
+        </article>
+        <article class="product-card reveal">
+          <div class="product-icon">
+            <svg aria-hidden="true" focusable="false" width="24" height="24"><use href="#ico-building"/></svg>
+          </div>
+          <h3>Corporate &amp; Events</h3>
+          <p>Branded corporate cakes and bulk dessert orders for company events, product launches, and ceremonies across Accra.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="section" aria-labelledby="gallery-heading">
+    <div class="section-inner">
+      <div class="section-header center reveal">
+        <span class="eyebrow">Our Creations</span>
+        <h2 id="gallery-heading">A Taste of What We Make</h2>
+        <p>Follow <a href="https://www.instagram.com/merlyscakesndesserts/" target="_blank" rel="noopener" style="color:var(--c-rose);font-weight:500">@merlyscakesndesserts</a> on Instagram to see our latest cakes and desserts.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-card reveal" role="img" aria-label="Custom birthday cake">
+          <div class="gc-bg gc-1">
+            <div class="gc-icon" aria-hidden="true">
+              <svg width="56" height="56" aria-hidden="true" focusable="false"><use href="#ico-cake"/></svg>
+            </div>
+          </div>
+          <div class="gc-overlay">
+            <div class="gc-label">Birthday Cakes</div>
+            <div class="gc-sub">Custom designs for every age</div>
+          </div>
+        </div>
+        <div class="gallery-card reveal" role="img" aria-label="Mousse cake with mirror glaze">
+          <div class="gc-bg gc-2">
+            <div class="gc-icon" aria-hidden="true">
+              <svg width="56" height="56" aria-hidden="true" focusable="false"><use href="#ico-sparkle"/></svg>
+            </div>
+          </div>
+          <div class="gc-overlay">
+            <div class="gc-label">Mousse Cakes</div>
+            <div class="gc-sub">Silky smooth, mirror-glazed</div>
+          </div>
+        </div>
+        <div class="gallery-card reveal" role="img" aria-label="Elegant wedding cake">
+          <div class="gc-bg gc-3">
+            <div class="gc-icon" aria-hidden="true">
+              <svg width="56" height="56" aria-hidden="true" focusable="false"><use href="#ico-flower"/></svg>
+            </div>
+          </div>
+          <div class="gc-overlay">
+            <div class="gc-label">Wedding Cakes</div>
+            <div class="gc-sub">Elegant multi-tier designs</div>
+          </div>
+        </div>
+        <div class="gallery-card reveal" role="img" aria-label="Decorated cupcakes">
+          <div class="gc-bg gc-4">
+            <div class="gc-icon" aria-hidden="true">
+              <svg width="56" height="56" aria-hidden="true" focusable="false"><use href="#ico-heart"/></svg>
+            </div>
+          </div>
+          <div class="gc-overlay">
+            <div class="gc-label">Cupcakes</div>
+            <div class="gc-sub">Mini sweet celebrations</div>
+          </div>
+        </div>
+        <div class="gallery-card reveal" role="img" aria-label="Fresh pastries and desserts">
+          <div class="gc-bg gc-5">
+            <div class="gc-icon" aria-hidden="true">
+              <svg width="56" height="56" aria-hidden="true" focusable="false"><use href="#ico-star"/></svg>
+            </div>
+          </div>
+          <div class="gc-overlay">
+            <div class="gc-label">Pastries</div>
+            <div class="gc-sub">Fresh-baked daily</div>
+          </div>
+        </div>
+        <div class="gallery-card reveal" role="img" aria-label="Corporate event cake">
+          <div class="gc-bg gc-6">
+            <div class="gc-icon" aria-hidden="true">
+              <svg width="56" height="56" aria-hidden="true" focusable="false"><use href="#ico-gift"/></svg>
+            </div>
+          </div>
+          <div class="gc-overlay">
+            <div class="gc-label">Event Cakes</div>
+            <div class="gc-sub">Corporate &amp; celebrations</div>
+          </div>
+        </div>
+      </div>
+      <p style="text-align:center;margin-top:2rem;font-size:.83rem;color:var(--c-muted)">
+        <a href="https://www.instagram.com/merlyscakesndesserts/" target="_blank" rel="noopener" style="color:var(--c-rose);font-weight:500">View all our creations on Instagram &rarr;</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ORDER FORM -->
+  <section id="order" class="section" aria-labelledby="order-heading">
+    <div class="section-inner">
+      <div class="section-header center reveal">
+        <span class="eyebrow" style="color:var(--c-gold)">Custom Orders</span>
+        <h2 id="order-heading" style="color:var(--c-cream)">Tell Us About<br/>Your Dream Cake</h2>
+        <p style="color:rgba(253,246,238,.5)">Fill in the details and we'll reach out within 24 hours on WhatsApp to confirm your order.</p>
+      </div>
+      <div class="order-wrap reveal">
+        <form id="order-form" novalidate>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="of-name">Your Name <span aria-hidden="true">*</span></label>
+              <input type="text" id="of-name" name="name" placeholder="Full name" required autocomplete="name" />
+            </div>
+            <div class="form-field">
+              <label for="of-phone">Phone / WhatsApp <span aria-hidden="true">*</span></label>
+              <input type="tel" id="of-phone" name="phone" placeholder="0XX XXX XXXX" required autocomplete="tel" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="of-occasion">Occasion <span aria-hidden="true">*</span></label>
+              <select id="of-occasion" name="occasion" required>
+                <option value="" disabled selected>Select occasion...</option>
+                <option>Birthday</option>
+                <option>Wedding</option>
+                <option>Anniversary</option>
+                <option>Baby Shower / Naming</option>
+                <option>Corporate / Company Event</option>
+                <option>Graduation</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="of-date">Date Needed <span aria-hidden="true">*</span></label>
+              <input type="date" id="of-date" name="date" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="of-type">Cake Type</label>
+              <select id="of-type" name="type">
+                <option value="" disabled selected>Select type...</option>
+                <option>Birthday Cake</option>
+                <option>Wedding / Tiered Cake</option>
+                <option>Mousse Cake</option>
+                <option>Cupcakes</option>
+                <option>Pastries / Desserts</option>
+                <option>Corporate Cake</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="of-flavour">Preferred Flavour</label>
+              <select id="of-flavour" name="flavour">
+                <option value="" disabled selected>Select flavour...</option>
+                <option>Vanilla</option>
+                <option>Chocolate</option>
+                <option>Red Velvet</option>
+                <option>Strawberry</option>
+                <option>Lemon</option>
+                <option>Marble</option>
+                <option>Surprise Me!</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="of-servings">Number of Servings</label>
+              <select id="of-servings" name="servings">
+                <option value="" disabled selected>Select size...</option>
+                <option>10 – 20 servings</option>
+                <option>20 – 50 servings</option>
+                <option>50 – 100 servings</option>
+                <option>100+ servings</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="of-budget">Budget (GHS)</label>
+              <select id="of-budget" name="budget">
+                <option value="" disabled selected>Select budget...</option>
+                <option>GHS 100 – 250</option>
+                <option>GHS 250 – 500</option>
+                <option>GHS 500 – 1,000</option>
+                <option>GHS 1,000+</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field form-field-full">
+              <label for="of-message">Special Instructions</label>
+              <textarea id="of-message" name="message" placeholder="Cake design, colours, message to write, dietary requirements..."></textarea>
+            </div>
+          </div>
+          <button type="submit" class="btn-primary" id="order-submit">
+            Send Order Request
+            <svg aria-hidden="true" focusable="false" width="14" height="14" style="margin-left:.5rem"><use href="#ico-arrow"/></svg>
+          </button>
+        </form>
+        <div role="status" aria-live="polite" id="form-success" hidden>
+          <svg aria-hidden="true" focusable="false" width="16" height="16" style="vertical-align:middle;margin-right:.5rem"><use href="#ico-check"/></svg>
+          Order request sent! We'll contact you on WhatsApp within 24 hours to confirm.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section" style="background:var(--c-surface2)" aria-labelledby="contact-heading">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <span class="eyebrow">Find Us</span>
+        <h2 id="contact-heading">Get in Touch</h2>
+        <p>Ready to order or have a question? We're just a call or WhatsApp message away.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="reveal">
+          <div class="contact-item">
+            <svg class="contact-icon" aria-hidden="true" focusable="false"><use href="#ico-phone"/></svg>
+            <div>
+              <h4>Phone / WhatsApp</h4>
+              <a href="tel:+233202757533">0202 757 533</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <svg class="contact-icon" aria-hidden="true" focusable="false"><use href="#ico-map"/></svg>
+            <div>
+              <h4>Location</h4>
+              <p>Accra, Ghana</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <svg class="contact-icon" aria-hidden="true" focusable="false" style="width:20px;height:20px"><use href="#ico-ig"/></svg>
+            <div>
+              <h4>Instagram</h4>
+              <a href="https://www.instagram.com/merlyscakesndesserts/" target="_blank" rel="noopener">@merlyscakesndesserts</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <svg class="contact-icon" aria-hidden="true" focusable="false"><use href="#ico-clock"/></svg>
+            <div>
+              <h4>Order Lead Time</h4>
+              <p>Please order at least <strong>3–5 days</strong> in advance for custom cakes.</p>
+            </div>
+          </div>
+          <a class="btn-wa" href="https://wa.me/233202757533?text=Hi%20Merly's!%20I'd%20like%20to%20order%20a%20cake." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+            <svg aria-hidden="true" focusable="false" width="18" height="18"><use href="#ico-wa"/></svg>
+            Chat on WhatsApp
+          </a>
+        </div>
+        <div class="reveal">
+          <iframe
+            class="map-embed"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3971.2!2d-0.353986!3d5.5482395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdfbdcce86c1a3f%3A0x76adffc47abd519d!2sMerly's%20Cakes%20and%20Desserts!5e0!3m2!1sen!2sgh!4v1"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Merly's Cakes and Desserts location — Accra, Ghana"
+            aria-label="Map: Merly's Cakes and Desserts, Accra, Ghana"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer id="footer" aria-label="Footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="nav-logo">Merly's <span>Cakes</span></span>
+      <p>Handcrafted custom cakes, mousse cakes and desserts made with love in Accra, Ghana. Quality and affordability in every slice.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/merlyscakesndesserts/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg aria-hidden="true" focusable="false" width="15" height="15"><use href="#ico-ig"/></svg>
+        </a>
+        <a href="https://www.facebook.com/merlyscakes/" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg aria-hidden="true" focusable="false" width="15" height="15"><use href="#ico-fb"/></svg>
+        </a>
+        <a href="https://www.threads.com/@merlyscakesndesserts" target="_blank" rel="noopener" aria-label="Threads">
+          <svg aria-hidden="true" focusable="false" width="15" height="15"><use href="#ico-threads"/></svg>
+        </a>
+        <a href="https://wa.me/233202757533" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg aria-hidden="true" focusable="false" width="15" height="15"><use href="#ico-wa"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Our Cakes</h4>
+      <ul>
+        <li><a href="#menu">Birthday Cakes</a></li>
+        <li><a href="#menu">Wedding Cakes</a></li>
+        <li><a href="#menu">Mousse Cakes</a></li>
+        <li><a href="#menu">Cupcakes</a></li>
+        <li><a href="#menu">Pastries</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#order">Place an Order</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://www.instagram.com/merlyscakesndesserts/" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Merly's Cakes and Desserts. All rights reserved. Accra, Ghana.</p>
+    <p>Built by <a href="#">Website Monster</a></p>
+  </div>
+</footer>
+
+<!-- STICKY CTA -->
+<div id="sticky-cta" role="complementary" aria-label="Quick action">
+  <p>Ready for your dream cake?</p>
+  <a href="tel:+233202757533" aria-label="Call Merly's Cakes">Call Now</a>
+  <a href="#order">Order Online</a>
+</div>
+
+<!-- WHATSAPP -->
+<a id="wa-btn" href="https://wa.me/233202757533?text=Hi%20Merly's!%20I'd%20like%20to%20order%20a%20cake." target="_blank" rel="noopener" aria-label="Order on WhatsApp">
+  <svg aria-hidden="true" focusable="false" width="27" height="27"><use href="#ico-wa"/></svg>
+</a>
+
+<!-- EXIT-INTENT POPUP -->
+<div id="popup-overlay" role="dialog" aria-modal="true" aria-labelledby="popup-title" aria-hidden="true">
+  <div id="popup-box">
+    <button class="popup-close" id="popup-close" aria-label="Close">
+      <svg aria-hidden="true" focusable="false" width="18" height="18"><use href="#ico-x"/></svg>
+    </button>
+    <span class="eyebrow">Sweet Offer</span>
+    <h3 id="popup-title">10% Off Your<br/>First Order!</h3>
+    <p>Leave your name and number — we'll send your discount code on WhatsApp before you confirm your order.</p>
+    <form class="popup-form" id="popup-form">
+      <input type="text" placeholder="Your name" required aria-label="Name" autocomplete="name" />
+      <input type="tel" placeholder="WhatsApp number" required aria-label="WhatsApp number" autocomplete="tel" />
+      <button type="submit">Claim My 10% Discount</button>
+    </form>
+    <p class="popup-skip" id="popup-skip" tabindex="0" role="button" aria-label="No thanks">No thanks, I'll pay full price</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ── THEME ── */
+  const body = document.body;
+  const themeBtn = document.getElementById('theme-toggle');
+  let dark = window.matchMedia('(prefers-color-scheme:dark)').matches;
+  function applyTheme(){
+    body.setAttribute('data-theme', dark ? 'dark' : 'light');
+    themeBtn.querySelector('use').setAttribute('href', dark ? '#ico-sun' : '#ico-moon');
+    themeBtn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+  }
+  applyTheme();
+  themeBtn.addEventListener('click', () => { dark = !dark; applyTheme(); });
+
+  /* ── MOBILE MENU ── */
+  const hamburger = document.getElementById('hamburger-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuClose = document.getElementById('menu-close');
+  let prevFocus;
+  function menuFocusable(){ return Array.from(mobileMenu.querySelectorAll('a,button')); }
+  function openMenu(){
+    prevFocus = document.activeElement;
+    mobileMenu.classList.add('open'); mobileMenu.removeAttribute('aria-hidden');
+    hamburger.setAttribute('aria-expanded','true'); menuClose.focus();
+  }
+  function closeMenu(){
+    mobileMenu.classList.remove('open'); mobileMenu.setAttribute('aria-hidden','true');
+    hamburger.setAttribute('aria-expanded','false'); if(prevFocus) prevFocus.focus();
+  }
+  hamburger.addEventListener('click', openMenu);
+  menuClose.addEventListener('click', closeMenu);
+  mobileMenu.querySelectorAll('.menu-link').forEach(l => l.addEventListener('click', closeMenu));
+  mobileMenu.addEventListener('keydown', e => {
+    if(e.key==='Escape'){closeMenu();return}
+    if(e.key!=='Tab') return;
+    const els = menuFocusable(); const [first,last] = [els[0],els[els.length-1]];
+    if(e.shiftKey){if(document.activeElement===first){e.preventDefault();last.focus()}}
+    else{if(document.activeElement===last){e.preventDefault();first.focus()}}
+  });
+
+  /* ── NAV + STICKY + WA ── */
+  const nav = document.getElementById('nav');
+  const stickyCta = document.getElementById('sticky-cta');
+  const waBtn = document.getElementById('wa-btn');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    nav.classList.toggle('scrolled', y > 50);
+    stickyCta.classList.toggle('show', y > 500);
+    waBtn.classList.toggle('show', y > 500);
+  }, {passive:true});
+
+  /* ── SPARKLE CANVAS ── */
+  const canvas = document.getElementById('hero-canvas');
+  const ctx = canvas.getContext('2d');
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  let particles = [];
+
+  function resizeCanvas(){ canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
+  function mkParticle(spreadY){
+    return {
+      x: Math.random() * canvas.width,
+      y: spreadY ? Math.random() * canvas.height : canvas.height + 8,
+      r: Math.random() * 2.2 + .5,
+      vy: -(Math.random() * .5 + .18),
+      vx: (Math.random() - .5) * .22,
+      opacity: Math.random() * .55 + .18,
+      phase: Math.random() * Math.PI * 2,
+      phaseSpeed: Math.random() * .022 + .006,
+      gold: Math.random() > .48
+    };
+  }
+  function initParticles(){ particles = Array.from({length:90}, () => mkParticle(true)); }
+  let rafId;
+  function draw(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach((p,i) => {
+      p.phase += p.phaseSpeed;
+      const a = p.opacity * (.42 + .58 * Math.sin(p.phase));
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx.fillStyle = p.gold ? `rgba(201,145,60,${a})` : `rgba(253,246,238,${a})`;
+      ctx.fill();
+      p.y += p.vy; p.x += p.vx;
+      if(p.y < -8) particles[i] = mkParticle(false);
+    });
+    rafId = requestAnimationFrame(draw);
+  }
+  if(!prefersReduced){
+    window.addEventListener('resize', () => { resizeCanvas(); initParticles(); }, {passive:true});
+    resizeCanvas(); initParticles(); draw();
+  }
+
+  /* ── GSAP HERO — Three-Layer Reliability ── */
+  const _sels = '.hero-eyebrow, .hero-title, .hero-sub, .hero-cta';
+  const _fallback = setTimeout(() => {
+    document.querySelectorAll(_sels).forEach(el => {
+      if(el.style.opacity !== '1'){
+        el.style.transition = 'opacity .6s ease, transform .6s ease';
+        el.style.opacity = '1'; el.style.transform = 'none';
+      }
+    });
+  }, 1800);
+  if(!prefersReduced){
+    window.addEventListener('load', () => {
+      if(typeof gsap === 'undefined') return;
+      clearTimeout(_fallback);
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.set(_sels, {y:26, opacity:0});
+      gsap.timeline({delay:.25})
+        .to('.hero-eyebrow', {opacity:1, y:0, duration:.85, ease:'power2.out'})
+        .to('.hero-title',   {opacity:1, y:0, duration:.95, ease:'power2.out'}, '-=.5')
+        .to('.hero-sub',     {opacity:1, y:0, duration:.85, ease:'power2.out'}, '-=.5')
+        .to('.hero-cta',     {opacity:1, y:0, duration:.75, ease:'power2.out'}, '-=.45');
+      gsap.to('#hero-content', {
+        y:-65, opacity:0, ease:'none',
+        scrollTrigger:{trigger:'#hero', start:'top top', end:'60% top', scrub:1.2}
+      });
+    });
+  }
+
+  /* ── REVEAL ── */
+  const ioReveal = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); ioReveal.unobserve(e.target); } });
+  }, {threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el => ioReveal.observe(el));
+
+  /* ── ORDER FORM ── */
+  document.getElementById('order-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    const btn = document.getElementById('order-submit');
+    const success = document.getElementById('form-success');
+    btn.disabled = true; btn.textContent = 'Sending…';
+    setTimeout(() => { this.hidden = true; success.hidden = false; success.focus(); }, 1200);
+  });
+
+  /* ── EXIT-INTENT POPUP ── */
+  const overlay = document.getElementById('popup-overlay');
+  const popupClose = document.getElementById('popup-close');
+  const popupSkip = document.getElementById('popup-skip');
+  let popupShown = false;
+  function popupFocusable(){ return Array.from(overlay.querySelectorAll('button,input,[tabindex="0"]')); }
+  function openPopup(){
+    if(popupShown) return; popupShown = true;
+    overlay.classList.add('open'); overlay.setAttribute('aria-hidden','false');
+    const els = popupFocusable(); if(els.length) els[0].focus();
+  }
+  function closePopup(){
+    overlay.classList.remove('open'); overlay.setAttribute('aria-hidden','true');
+  }
+  popupClose.addEventListener('click', closePopup);
+  popupSkip.addEventListener('click', closePopup);
+  popupSkip.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' ') closePopup(); });
+  overlay.addEventListener('click', e => { if(e.target===overlay) closePopup(); });
+  overlay.addEventListener('keydown', e => {
+    if(e.key==='Escape'){closePopup();return}
+    if(e.key!=='Tab') return;
+    const els = popupFocusable(); const [first,last] = [els[0],els[els.length-1]];
+    if(e.shiftKey){if(document.activeElement===first){e.preventDefault();last.focus()}}
+    else{if(document.activeElement===last){e.preventDefault();first.focus()}}
+  });
+  document.getElementById('popup-form').addEventListener('submit', e => { e.preventDefault(); closePopup(); });
+  document.addEventListener('mouseleave', e => { if(e.clientY < 20) openPopup(); });
+  setTimeout(openPopup, 45000);
+})();
+</script>
+</body>
+</html>
