@@ -185,6 +185,8 @@
     .gc { aspect-ratio:1; position:relative; overflow:hidden; cursor:pointer }
     .gc img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .6s ease }
     .gc:hover img { transform:scale(1.06) }
+    .gc img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .6s ease }
+    .gc:hover img { transform:scale(1.06) }
     .gc-bg { position:absolute; inset:0; transition:transform .6s ease }
     .gc:hover .gc-bg { transform:scale(1.06) }
     .gb-1 { background:linear-gradient(135deg,#1a1a1a 0%,#2a2a2a 100%) }
@@ -592,51 +594,27 @@
       </div>
       <div class="gallery-grid">
         <div class="gc reveal" role="img" aria-label="Classic haircut">
-          <div class="gc-bg gb-1">
-            <div class="gc-icon-wrap" aria-hidden="true">
-              <svg width="52" height="52" aria-hidden="true" focusable="false"><use href="#ico-scissors"/></svg>
-            </div>
-          </div>
+          <img src="images/gallery-1.jpg" alt="Barber giving a precise classic scissor haircut" loading="lazy">
           <div class="gc-ov"><div class="gc-lbl">Classic Cut</div><div class="gc-sub">Clean &amp; precise</div></div>
         </div>
         <div class="gc reveal" role="img" aria-label="Fade haircut">
-          <div class="gc-bg gb-2">
-            <div class="gc-icon-wrap" aria-hidden="true">
-              <svg width="52" height="52" aria-hidden="true" focusable="false"><use href="#ico-fade"/></svg>
-            </div>
-          </div>
+          <img src="images/gallery-2.jpg" alt="Barber doing a seamless mid fade with clippers" loading="lazy">
           <div class="gc-ov"><div class="gc-lbl">Fade</div><div class="gc-sub">Low, mid or high</div></div>
         </div>
-        <div class="gc reveal" role="img" aria-label="Shape-up">
-          <div class="gc-bg gb-3">
-            <div class="gc-icon-wrap" aria-hidden="true">
-              <svg width="52" height="52" aria-hidden="true" focusable="false"><use href="#ico-razor"/></svg>
-            </div>
-          </div>
+        <div class="gc reveal" role="img" aria-label="Shape-up edge-up">
+          <img src="images/gallery-3.jpg" alt="Razor-sharp edge-up being applied to a client's hairline" loading="lazy">
           <div class="gc-ov"><div class="gc-lbl">Shape-up</div><div class="gc-sub">Razor-sharp edges</div></div>
         </div>
         <div class="gc reveal" role="img" aria-label="Beard trim">
-          <div class="gc-bg gb-4">
-            <div class="gc-icon-wrap" aria-hidden="true">
-              <svg width="52" height="52" aria-hidden="true" focusable="false"><use href="#ico-beard"/></svg>
-            </div>
-          </div>
+          <img src="images/gallery-4.jpg" alt="Professional beard trim and sculpting with scissors" loading="lazy">
           <div class="gc-ov"><div class="gc-lbl">Beard Trim</div><div class="gc-sub">Groomed &amp; sculpted</div></div>
         </div>
         <div class="gc reveal" role="img" aria-label="Hair design">
-          <div class="gc-bg gb-5">
-            <div class="gc-icon-wrap" aria-hidden="true">
-              <svg width="52" height="52" aria-hidden="true" focusable="false"><use href="#ico-star"/></svg>
-            </div>
-          </div>
+          <img src="images/gallery-5.jpg" alt="Intricate geometric hair design pattern carved into a fade" loading="lazy">
           <div class="gc-ov"><div class="gc-lbl">Hair Design</div><div class="gc-sub">Custom patterns</div></div>
         </div>
-        <div class="gc reveal" role="img" aria-label="Kids cut">
-          <div class="gc-bg gb-6">
-            <div class="gc-icon-wrap" aria-hidden="true">
-              <svg width="52" height="52" aria-hidden="true" focusable="false"><use href="#ico-smile"/></svg>
-            </div>
-          </div>
+        <div class="gc reveal" role="img" aria-label="Kids haircut">
+          <img src="images/gallery-6.jpg" alt="Young boy getting a neat haircut, smiling at the barber" loading="lazy">
           <div class="gc-ov"><div class="gc-lbl">Kids Cut</div><div class="gc-sub">Leave 'em smiling</div></div>
         </div>
       </div>
