@@ -56,6 +56,7 @@ From the `maps_place_details` response, extract:
 - **Social proof**: star rating, review count, top 3 review snippets (verbatim, reviewer name attributed)
 - **Tone**: infer from review language — formal vs. casual, luxury vs. accessible, local vs. corporate
 - **Photos**: count of real photo URLs returned (`photos.length`) — drives gallery image generation in Step 4
+- **Instagram handle**: note if found anywhere in the Maps listing, website, or review mentions — used in Step 2a
 
 Identify the **niche** — pick the single best match:
 Restaurant/Café · Beauty/Spa/Salon · Real Estate/Property · Legal/Consulting · Fitness/Gym · E-commerce/Retail · Healthcare/Clinic · Home Services · Education/Tutoring · Generic
@@ -64,7 +65,32 @@ Restaurant/Café · Beauty/Spa/Salon · Real Estate/Property · Legal/Consulting
 
 ### Step 2 — PLAN
 
-Before generating any code, decide:
+#### 2a — Visual Research (run before deciding palette or animation)
+
+**Instagram visual audit** — if a handle was found in Step 1, scrape it with the Apify RAG Browser (`apify--rag-web-browser`) at `https://www.instagram.com/{handle}/`. Extract all of the following and use them as the **primary design source** — they override the niche defaults below:
+
+| Signal | What to extract |
+|---|---|
+| **Color palette** | Dominant colors across the grid — backgrounds, product colors, overlays, brand colors |
+| **Photography mood** | Bright & airy / dark & moody / vibrant & saturated / natural & earthy |
+| **Typography style** | Text overlays or story graphics — serif vs sans, bold vs light, uppercase vs mixed |
+| **Content tone** | Formal/professional · casual/playful · luxury/aspirational |
+| **Recurring visual themes** | Motifs, patterns, imagery subjects, filters, or aesthetics that repeat across posts |
+
+If Instagram is unavailable or private, fall back to the niche defaults below.
+
+---
+
+**MotionSites.ai component reference** — always run this step before generating any HTML:
+
+Tell the user:
+> *"Before I generate the site, head to **[motionsites.ai](https://motionsites.ai/)**, browse the **[business category]** section, and pick 1–2 hero or section styles you like — I'll adapt the chosen look into the build."*
+
+Wait for the user's choice, then use it as the foundation for the hero animation style, card layouts, and section transitions in Step 3.
+
+---
+
+Before generating any code, also decide:
 
 - **Color palette**: 2 primary colors + 1 accent that match the niche's emotional register
   - Luxury spa → muted cream, sage, brushed gold
