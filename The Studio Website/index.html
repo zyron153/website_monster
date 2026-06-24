@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Studio | Creative Hub — Dance, Music, Art &amp; Events | Milnerton, Cape Town</title>
+  <meta name="description" content="The Studio is Cape Town's creative hub for Dance, Music, Drama, Visual Arts, Pottery &amp; Creative Events. Internationally accredited classes for kids &amp; adults in Milnerton. Enroll today!">
+  <meta property="og:title" content="The Studio — Milnerton's Creative Hub">
+  <meta property="og:description" content="Dance · Music · Drama · Art · Pottery · Events. Cape Town's creative hub where imagination takes shape.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://thestudioza.co.za">
+  <!-- GA4: replace G-XXXXXXXXXX with your Measurement ID -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+
+  <style>
+    :root {
+      --dark:    #1A1033;
+      --dark-2:  #241840;
+      --gold:    #F4A928;
+      --coral:   #E85D4A;
+      --teal:    #2BAD9C;
+      --cream:   #FDF8F0;
+      --text:    #2D2640;
+      --muted:   #7B7393;
+      --card-bg: #ffffff;
+      --nav-bg:  rgba(26,16,51,0.95);
+      --nav-h:   72px;
+      --radius:  16px;
+      --radius-sm: 8px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+    img  { display: block; max-width: 100%; }
+    a    { text-decoration: none; color: inherit; }
+    button, input, select, textarea { font-family: inherit; }
+
+    /* Skip link */
+    .skip-link { position: absolute; top: -100%; left: 1rem; background: var(--gold); color: var(--dark); padding: .5rem 1rem; border-radius: var(--radius-sm); font-weight: 600; z-index: 9999; }
+    .skip-link:focus { top: 1rem; }
+
+    /* ── Nav ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: var(--nav-bg);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 clamp(1rem,4vw,3rem);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(244,169,40,.2);
+    }
+    .nav-logo { display: flex; flex-direction: column; }
+    .nav-logo-name { font-family: 'Playfair Display',serif; font-size: 1.4rem; font-weight: 900; color: #fff; letter-spacing: -.02em; }
+    .nav-logo-sub  { font-size: .65rem; font-weight: 500; color: var(--gold); letter-spacing: .2em; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    @media(max-width:768px){ .nav-links { display:none; } }
+    .nav-links a { font-size: .9rem; font-weight: 500; color: rgba(255,255,255,.8); transition: color .2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
+    .btn-theme {
+      background: none; border: none; cursor: pointer; font-size: 1.2rem; color: rgba(255,255,255,.7);
+      width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; transition: color .2s;
+    }
+    .btn-theme:focus-visible { outline: 2px solid var(--gold); }
+    .btn-primary {
+      background: var(--gold); color: var(--dark); font-weight: 700;
+      padding: .6rem 1.4rem; border-radius: 50px; border: none; cursor: pointer;
+      font-size: .875rem; transition: transform .2s, box-shadow .2s;
+      white-space: nowrap; min-height: 44px; display: flex; align-items: center; gap: .4rem;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(244,169,40,.4); }
+    .btn-primary:focus-visible { outline: 2px solid var(--dark); }
+    .hamburger {
+      display: none; background: none; border: none; cursor: pointer;
+      padding: .4rem; width: 44px; height: 44px;
+      flex-direction: column; justify-content: center; gap: 5px; align-items: center;
+    }
+    @media(max-width:768px){ .hamburger { display:flex; } }
+    .hamburger span { display:block; width:22px; height:2px; background:#fff; border-radius:2px; transition: transform .3s, opacity .3s; }
+
+    /* Mobile menu */
+    .mobile-menu {
+      position: fixed; top: var(--nav-h); left: 0; right: 0;
+      background: var(--dark); padding: 1.5rem 2rem;
+      display: none; flex-direction: column; gap: 1rem;
+      z-index: 999; border-bottom: 1px solid rgba(244,169,40,.2);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: rgba(255,255,255,.85); font-size: 1.1rem; font-weight: 500; padding: .5rem 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative; min-height: 100vh;
+      margin-top: var(--nav-h);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    #hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .hero-content { position: relative; z-index: 2; text-align: center; padding: clamp(2rem,5vw,4rem); max-width: 900px; }
+    .hero-eyebrow {
+      font-size: .8rem; font-weight: 600; letter-spacing: .25em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.2rem;
+      display: flex; align-items: center; justify-content: center; gap: .75rem;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after { content:''; display:block; width:40px; height:1px; background:var(--gold); opacity:.6; }
+    .hero-title {
+      font-family: 'Playfair Display',serif;
+      font-size: clamp(3rem,min(9vw,9.5vh),7.5rem);
+      font-weight: 900; color: #fff; line-height: 1.05;
+      margin-bottom: 1.5rem; text-shadow: 0 4px 40px rgba(0,0,0,.4);
+    }
+    .hero-title em { color: var(--gold); font-style: italic; }
+    .hero-sub { font-size: clamp(1rem,2.5vw,1.25rem); color: rgba(255,255,255,.85); max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.65; }
+    .hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-outline-white {
+      background: transparent; color: #fff; border: 2px solid rgba(255,255,255,.5);
+      padding: .65rem 1.6rem; border-radius: 50px; font-weight: 600;
+      font-size: .875rem; cursor: pointer; transition: all .2s;
+      min-height: 44px; display: flex; align-items: center;
+    }
+    .btn-outline-white:hover { border-color:#fff; background:rgba(255,255,255,.1); }
+    .hero-scroll {
+      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: .5rem;
+      color: rgba(255,255,255,.5); font-size: .7rem; letter-spacing: .15em; text-transform: uppercase;
+    }
+    .hero-scroll-dot { width:1px; height:40px; background:linear-gradient(to bottom,rgba(255,255,255,.5),transparent); animation: sdot 2s ease-in-out infinite; }
+    @keyframes sdot { 0%,100%{transform:scaleY(1);opacity:1} 50%{transform:scaleY(.5);opacity:.3} }
+
+    /* ── Section base ── */
+    .section { padding: clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,3rem); max-width: 1280px; margin: 0 auto; }
+    .section-tag { font-size: .75rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: .75rem; }
+    .section-title { font-family: 'Playfair Display',serif; font-size: clamp(2rem,4vw,3rem); font-weight: 700; line-height: 1.2; color: var(--dark); margin-bottom: 1rem; }
+    .section-sub { font-size: 1.05rem; color: var(--muted); max-width: 600px; line-height: 1.7; }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── About ── */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    @media(max-width:768px){ .about-grid { grid-template-columns:1fr; gap:2.5rem; } }
+    .about-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 2.5rem; }
+    @media(max-width:480px){ .about-stats { grid-template-columns:1fr 1fr; } }
+    .stat-card { background: var(--dark); color: #fff; border-radius: var(--radius); padding: 1.5rem 1rem; text-align: center; }
+    .stat-num { font-family: 'Playfair Display',serif; font-size: 2.2rem; font-weight: 900; color: var(--gold); }
+    .stat-label { font-size: .8rem; color: rgba(255,255,255,.65); margin-top: .25rem; line-height: 1.4; }
+    .about-img-wrap { position:relative; border-radius:var(--radius); overflow:hidden; background:var(--dark); aspect-ratio:4/5; display:flex; align-items:center; justify-content:center; }
+    .about-artwork { position:absolute; inset:0; background:linear-gradient(135deg,#E85D4A 0%,#F4A928 35%,#2BAD9C 70%,#1A1033 100%); opacity:.85; }
+    .about-label { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; color:#fff; text-align:center; padding:2rem; gap:1rem; }
+    .about-label svg { width:56px; height:56px; opacity:.9; }
+    .about-label p { font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:700; line-height:1.4; }
+
+    /* ── Departments ── */
+    .dept-bg { background: var(--dark); padding: clamp(4rem,8vw,7rem) 0; }
+    .dept-inner { max-width: 1280px; margin: 0 auto; padding: 0 clamp(1.5rem,5vw,3rem); }
+    .dept-inner .section-title { color: #fff; }
+    .dept-inner .section-sub { color: rgba(255,255,255,.6); }
+    .dept-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3rem; }
+    @media(max-width:900px){ .dept-grid { grid-template-columns:1fr; } }
+    .dept-card {
+      border-radius: var(--radius); padding: 2.5rem 2rem;
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08);
+      transition: transform .3s, border-color .3s; position: relative; overflow: hidden;
+    }
+    .dept-card::before { content:''; position:absolute; inset:0; opacity:0; transition:opacity .4s; }
+    .dept-card:nth-child(1)::before { background:linear-gradient(135deg,rgba(232,93,74,.15),transparent); }
+    .dept-card:nth-child(2)::before { background:linear-gradient(135deg,rgba(244,169,40,.15),transparent); }
+    .dept-card:nth-child(3)::before { background:linear-gradient(135deg,rgba(43,173,156,.15),transparent); }
+    .dept-card:hover::before { opacity:1; }
+    .dept-card:hover { transform:translateY(-6px); border-color:rgba(255,255,255,.2); }
+    .dept-icon { width:56px; height:56px; border-radius:var(--radius-sm); display:flex; align-items:center; justify-content:center; margin-bottom:1.5rem; }
+    .dept-card:nth-child(1) .dept-icon { background:rgba(232,93,74,.2); }
+    .dept-card:nth-child(2) .dept-icon { background:rgba(244,169,40,.2); }
+    .dept-card:nth-child(3) .dept-icon { background:rgba(43,173,156,.2); }
+    .dept-name { font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:700; color:#fff; margin-bottom:.75rem; }
+    .dept-desc { font-size:.9rem; color:rgba(255,255,255,.6); line-height:1.7; margin-bottom:1.5rem; }
+    .dept-tags { display:flex; flex-wrap:wrap; gap:.4rem; }
+    .dept-tag { font-size:.7rem; font-weight:500; padding:.25rem .7rem; border-radius:50px; background:rgba(255,255,255,.1); color:rgba(255,255,255,.7); }
+    .dept-link { display:inline-flex; align-items:center; gap:.4rem; margin-top:1.5rem; font-size:.85rem; font-weight:600; color:var(--gold); transition:gap .2s; }
+    .dept-link:hover { gap:.7rem; }
+
+    /* ── Classes ── */
+    .classes-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem; margin-top:3rem; }
+    @media(max-width:900px){ .classes-grid { grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:560px){ .classes-grid { grid-template-columns:1fr; } }
+    .class-card {
+      background:var(--card-bg); border-radius:var(--radius); padding:2rem 1.5rem;
+      box-shadow:0 2px 16px rgba(26,16,51,.08); border:1px solid rgba(26,16,51,.06);
+      transition:transform .3s, box-shadow .3s;
+    }
+    .class-card:hover { transform:translateY(-4px); box-shadow:0 8px 32px rgba(26,16,51,.12); }
+    .class-icon-wrap { width:52px; height:52px; border-radius:var(--radius-sm); display:flex; align-items:center; justify-content:center; margin-bottom:1.2rem; }
+    .class-icon-wrap svg { width:26px; height:26px; }
+    .class-name { font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; color:var(--dark); margin-bottom:.5rem; }
+    .class-desc { font-size:.875rem; color:var(--muted); line-height:1.65; }
+    .class-badge { display:inline-block; margin-top:.75rem; font-size:.7rem; font-weight:500; padding:.2rem .65rem; border-radius:50px; background:var(--cream); color:var(--dark); }
+    .ci-coral  { background:rgba(232,93,74,.12); color:var(--coral); }
+    .ci-gold   { background:rgba(244,169,40,.12); color:#C4850A; }
+    .ci-teal   { background:rgba(43,173,156,.12); color:var(--teal); }
+    .ci-purple { background:rgba(107,70,193,.12); color:#6B46C1; }
+    .ci-pink   { background:rgba(236,72,153,.12); color:#EC4899; }
+    .ci-green  { background:rgba(34,197,94,.12); color:#16A34A; }
+
+    /* ── Gallery ── */
+    .gallery-bg { background:var(--dark); padding:clamp(4rem,8vw,7rem) 0; }
+    .gallery-inner { max-width:1280px; margin:0 auto; padding:0 clamp(1.5rem,5vw,3rem); }
+    .gallery-inner .section-title { color:#fff; }
+    .gallery-inner .section-sub { color:rgba(255,255,255,.6); }
+    .gallery-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:3rem; }
+    @media(max-width:680px){ .gallery-grid { grid-template-columns:repeat(2,1fr); } }
+    .gallery-card { position:relative; border-radius:var(--radius); overflow:hidden; aspect-ratio:1; cursor:pointer; }
+    .gallery-card img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .6s ease; }
+    .gallery-card:hover img { transform:scale(1.06); }
+    .gc-bg { position:absolute; inset:0; width:100%; height:100%; }
+    .gc-bg-1 { background:linear-gradient(135deg,#E85D4A,#F4A928); }
+    .gc-bg-2 { background:linear-gradient(135deg,#F4A928,#2BAD9C); }
+    .gc-bg-3 { background:linear-gradient(135deg,#2BAD9C,#1A1033); }
+    .gc-bg-4 { background:linear-gradient(135deg,#6B46C1,#E85D4A); }
+    .gc-bg-5 { background:linear-gradient(135deg,#1A1033,#F4A928); }
+    .gc-bg-6 { background:linear-gradient(135deg,#2BAD9C,#E85D4A); }
+    .gallery-label { position:absolute; bottom:0; left:0; right:0; padding:1rem 1.25rem; background:linear-gradient(to top,rgba(0,0,0,.7),transparent); color:#fff; font-size:.85rem; font-weight:600; }
+
+    /* ── Reviews ── */
+    .reviews-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:3rem; }
+    @media(max-width:768px){ .reviews-grid { grid-template-columns:1fr; } }
+    .review-card { background:var(--card-bg); border-radius:var(--radius); padding:2rem; box-shadow:0 2px 16px rgba(26,16,51,.08); border:1px solid rgba(26,16,51,.06); }
+    .stars { color:var(--gold); font-size:1rem; letter-spacing:2px; margin-bottom:1rem; }
+    .review-text { font-size:.9rem; color:var(--muted); line-height:1.7; font-style:italic; margin-bottom:1.25rem; }
+    .reviewer { font-size:.85rem; font-weight:600; color:var(--dark); }
+    .reviewer-role { font-size:.78rem; color:var(--muted); }
+
+    /* ── Enroll ── */
+    .enroll-bg { background:linear-gradient(135deg,var(--dark),var(--dark-2)); padding:clamp(4rem,8vw,7rem) 0; }
+    .enroll-inner { max-width:800px; margin:0 auto; padding:0 clamp(1.5rem,5vw,3rem); text-align:center; }
+    .enroll-inner .section-title { color:#fff; }
+    .enroll-inner .section-sub { color:rgba(255,255,255,.65); margin:0 auto; }
+    .enroll-form { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:2.5rem; text-align:left; }
+    @media(max-width:600px){ .enroll-form { grid-template-columns:1fr; } }
+    .enroll-form .full { grid-column:1 / -1; }
+    .form-group { display:flex; flex-direction:column; gap:.4rem; }
+    .form-group label { font-size:.8rem; font-weight:600; color:rgba(255,255,255,.7); text-transform:uppercase; letter-spacing:.05em; }
+    .form-group input, .form-group select, .form-group textarea {
+      background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.15);
+      border-radius:var(--radius-sm); padding:.75rem 1rem;
+      color:#fff; font-size:.9rem; min-height:44px; transition:border-color .2s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline:none; border-color:var(--gold); }
+    .form-group input::placeholder, .form-group textarea::placeholder { color:rgba(255,255,255,.35); }
+    .form-group select { color:rgba(255,255,255,.7); }
+    .form-group select option { background:var(--dark); color:#fff; }
+    .form-group textarea { resize:vertical; min-height:100px; }
+    .form-required { color:var(--coral); }
+    .btn-submit {
+      grid-column:1 / -1; background:var(--gold); color:var(--dark); font-weight:700;
+      font-size:1rem; padding:.875rem 2rem; border-radius:50px; border:none; cursor:pointer;
+      transition:transform .2s, box-shadow .2s; min-height:52px;
+    }
+    .btn-submit:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(244,169,40,.4); }
+    .btn-submit:focus-visible { outline:2px solid #fff; outline-offset:2px; }
+    .form-note { grid-column:1/-1; font-size:.78rem; color:rgba(255,255,255,.4); text-align:center; }
+
+    /* ── Contact ── */
+    .contact-grid { display:grid; grid-template-columns:1fr 1.2fr; gap:3rem; align-items:start; }
+    @media(max-width:768px){ .contact-grid { grid-template-columns:1fr; } }
+    .contact-items { display:flex; flex-direction:column; gap:2rem; }
+    .contact-item { display:flex; gap:1rem; align-items:flex-start; }
+    .contact-item-icon { width:44px; height:44px; flex-shrink:0; background:var(--dark); border-radius:var(--radius-sm); display:flex; align-items:center; justify-content:center; }
+    .contact-item-icon svg { width:20px; height:20px; stroke:var(--gold); fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+    .contact-item-label { font-size:.75rem; font-weight:600; text-transform:uppercase; letter-spacing:.1em; color:var(--muted); margin-bottom:.35rem; }
+    .contact-item-value { font-size:.95rem; color:var(--dark); line-height:1.5; }
+    .contact-item-value a { color:var(--coral); }
+    .hours-table { width:100%; border-collapse:collapse; margin-top:.5rem; }
+    .hours-table td { padding:.3rem 0; font-size:.875rem; }
+    .hours-table td:last-child { text-align:right; color:var(--muted); }
+    .map-wrap { border-radius:var(--radius); overflow:hidden; height:420px; }
+    .map-wrap iframe { width:100%; height:100%; border:0; }
+
+    /* ── Footer ── */
+    .footer { background:var(--dark); color:rgba(255,255,255,.65); padding:3rem clamp(1.5rem,5vw,3rem) 2rem; }
+    .footer-inner { max-width:1280px; margin:0 auto; display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:3rem; }
+    @media(max-width:768px){ .footer-inner { grid-template-columns:1fr 1fr; gap:2rem; } }
+    @media(max-width:480px){ .footer-inner { grid-template-columns:1fr; } }
+    .footer-brand-name { font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:900; color:#fff; margin-bottom:.5rem; }
+    .footer-brand-desc { font-size:.875rem; line-height:1.7; max-width:280px; }
+    .footer-social { display:flex; gap:.75rem; margin-top:1.5rem; }
+    .footer-social a { width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,.08); display:flex; align-items:center; justify-content:center; transition:background .2s; }
+    .footer-social a:hover { background:var(--gold); }
+    .footer-social svg { width:16px; height:16px; }
+    .footer-col-title { font-size:.8rem; font-weight:700; text-transform:uppercase; letter-spacing:.15em; color:rgba(255,255,255,.35); margin-bottom:1rem; }
+    .footer-links { list-style:none; display:flex; flex-direction:column; gap:.6rem; }
+    .footer-links a { font-size:.9rem; transition:color .2s; }
+    .footer-links a:hover { color:var(--gold); }
+    .footer-bottom { max-width:1280px; margin:3rem auto 0; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,.08); font-size:.8rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+
+    /* ── WhatsApp float ── */
+    .wa-float { position:fixed; bottom:5.5rem; right:1.5rem; width:52px; height:52px; background:#25D366; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 20px rgba(37,211,102,.4); z-index:900; transition:transform .2s, box-shadow .2s; }
+    .wa-float:hover { transform:scale(1.1); box-shadow:0 6px 28px rgba(37,211,102,.5); }
+    .wa-float svg { width:28px; height:28px; fill:#fff; }
+
+    /* ── Mobile sticky CTA ── */
+    .mobile-cta { position:fixed; bottom:0; left:0; right:0; background:var(--gold); color:var(--dark); font-weight:700; font-size:.95rem; text-align:center; padding:1rem; z-index:800; display:none; align-items:center; justify-content:center; gap:.5rem; min-height:56px; }
+    @media(max-width:768px){ .mobile-cta { display:flex; } }
+
+    /* ── Exit popup ── */
+    .popup-overlay { position:fixed; inset:0; background:rgba(0,0,0,.6); z-index:2000; display:flex; align-items:center; justify-content:center; padding:1.5rem; opacity:0; pointer-events:none; transition:opacity .3s; }
+    .popup-overlay.open { opacity:1; pointer-events:all; }
+    .popup { background:var(--cream); border-radius:var(--radius); padding:2.5rem; max-width:440px; width:100%; position:relative; text-align:center; transform:translateY(20px); transition:transform .3s; }
+    .popup-overlay.open .popup { transform:none; }
+    .popup-close { position:absolute; top:1rem; right:1rem; background:none; border:none; cursor:pointer; font-size:1.2rem; color:var(--muted); width:44px; height:44px; display:flex; align-items:center; justify-content:center; }
+    .popup-icon { font-size:3rem; margin-bottom:1rem; }
+    .popup-title { font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:700; color:var(--dark); margin-bottom:.75rem; }
+    .popup-text { font-size:.9rem; color:var(--muted); line-height:1.6; margin-bottom:1.5rem; }
+    .popup-cta { background:var(--coral); color:#fff; padding:.875rem 2rem; border-radius:50px; font-weight:700; font-size:.9rem; border:none; cursor:pointer; display:block; width:100%; transition:transform .2s; }
+    .popup-cta:hover { transform:translateY(-2px); }
+    .popup-skip { display:block; margin-top:.75rem; font-size:.8rem; color:var(--muted); cursor:pointer; }
+
+    @media(prefers-reduced-motion:reduce) {
+      *, *::before, *::after { animation-duration:.01ms !important; transition-duration:.01ms !important; }
+      .reveal { opacity:1 !important; transform:none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- Navigation -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <a href="#" class="nav-logo" aria-label="The Studio home">
+      <span class="nav-logo-name">The Studio</span>
+      <span class="nav-logo-sub">Creative Hub · Milnerton</span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="#about">About</a></li>
+      <li><a href="#departments">Departments</a></li>
+      <li><a href="#classes">Classes</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="btn-theme" id="themeToggle" aria-label="Toggle dark/light mode">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <a href="#enroll" class="btn-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Enroll Now
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+    <a href="#about">About</a>
+    <a href="#departments">Departments</a>
+    <a href="#classes">Classes</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+    <a href="#enroll" style="color:var(--gold);font-weight:700;">Enroll Now</a>
+  </div>
+
+  <main id="main">
+
+  <!-- Hero -->
+  <section class="hero" aria-labelledby="hero-title">
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Cape Town's Creative Hub</div>
+      <h1 class="hero-title" id="hero-title">
+        Imagine.<br><em>Create.</em><br>Perform.
+      </h1>
+      <p class="hero-sub">Dance, Music, Drama, Art, Pottery &amp; Creative Events — for kids and adults in Milnerton. Where every class is a new beginning.</p>
+      <div class="hero-ctas">
+        <a href="#enroll" class="btn-primary" style="font-size:1rem;padding:.8rem 2rem;">Start Your Journey</a>
+        <a href="#departments" class="btn-outline-white">Explore Classes</a>
+      </div>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">
+      <span>Scroll</span>
+      <div class="hero-scroll-dot"></div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section" id="about" aria-labelledby="about-title">
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="section-tag">Who We Are</div>
+        <h2 class="section-title" id="about-title">Where creativity comes to life</h2>
+        <p class="section-sub">The Studio is a creative hub of passionate teachers and instructors at the heart of Milnerton, Cape Town. From Dance, Music, Drama and Art to Creative Events and Party Planning — we're where Cape Town comes to create, connect and celebrate imagination.</p>
+        <p class="section-sub" style="margin-top:1rem;">Driven by Tashai and a team of dedicated artists and educators, The Studio offers internationally accredited courses through Trinity College London, DanceCor, SABOD and more — bringing world-class arts education to your neighbourhood.</p>
+        <div class="about-stats">
+          <div class="stat-card"><div class="stat-num">1,891+</div><div class="stat-label">Community Members</div></div>
+          <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">Creative Departments</div></div>
+          <div class="stat-card"><div class="stat-num">All Ages</div><div class="stat-label">Kids &amp; Adults Welcome</div></div>
+        </div>
+      </div>
+      <div class="about-img-wrap reveal">
+        <div class="about-artwork"></div>
+        <div class="about-label">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          <p>"Come in and have a look. Stay for a coffee? Start something new."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Departments -->
+  <div class="dept-bg" id="departments">
+    <div class="dept-inner">
+      <div class="section-tag">Our Departments</div>
+      <h2 class="section-title reveal">Three worlds of creativity, one studio</h2>
+      <p class="section-sub reveal">Whether you're enrolling in classes, planning a memorable event, or booking the perfect kids' party — The Studio has a department built for you.</p>
+      <div class="dept-grid">
+
+        <div class="dept-card reveal">
+          <div class="dept-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E85D4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+          </div>
+          <div class="dept-name">New Rising Arts Academy</div>
+          <p class="dept-desc">Exciting, educational and competitive performance &amp; visual arts classes, events, holiday programs, workshops and internationally accredited training courses for kids and adults.</p>
+          <div class="dept-tags">
+            <span class="dept-tag">Dance</span><span class="dept-tag">Drama</span><span class="dept-tag">Music</span><span class="dept-tag">Visual Arts</span><span class="dept-tag">Trinity College London</span>
+          </div>
+          <a href="#classes" class="dept-link">Browse Classes <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+
+        <div class="dept-card reveal">
+          <div class="dept-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#F4A928" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          </div>
+          <div class="dept-name">Canvas &amp; Clay Creative Events</div>
+          <p class="dept-desc">Guided painting and pottery for social, private and corporate events. Kitchen Teas, Baby Showers, Corporate Team Building and Birthdays — plus our Canvas &amp; Clay Café for free creative expression any time.</p>
+          <div class="dept-tags">
+            <span class="dept-tag">Painting</span><span class="dept-tag">Pottery</span><span class="dept-tag">Team Building</span><span class="dept-tag">Venue Hire</span><span class="dept-tag">Catering</span>
+          </div>
+          <a href="#enroll" class="dept-link">Book an Event <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+
+        <div class="dept-card reveal">
+          <div class="dept-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2BAD9C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="dept-name">As You Wish Kids Events</div>
+          <p class="dept-desc">Fun and interactive kids events including Creative Aftercare Programs, School Outings and Creative Holiday Club. Party planning with Character Appearances, Facepainting, Decor, Party Packs, Catering &amp; Venue Booking.</p>
+          <div class="dept-tags">
+            <span class="dept-tag">Kids Parties</span><span class="dept-tag">Aftercare</span><span class="dept-tag">Holiday Club</span><span class="dept-tag">Facepainting</span><span class="dept-tag">Characters</span>
+          </div>
+          <a href="#enroll" class="dept-link">Plan a Party <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Classes -->
+  <section class="section" id="classes" aria-labelledby="classes-title">
+    <div style="max-width:560px;">
+      <div class="section-tag">What We Teach</div>
+      <h2 class="section-title reveal" id="classes-title">Every class, every passion</h2>
+      <p class="section-sub reveal">From ballet to hip hop, piano to pottery — find your art form and let our passionate instructors guide the way.</p>
+    </div>
+    <div class="classes-grid">
+
+      <div class="class-card reveal">
+        <div class="class-icon-wrap ci-coral">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+        </div>
+        <div class="class-name">Dance</div>
+        <p class="class-desc">Ballet, Contemporary, Modern, Hip Hop, Acrobatics and Flexinastix. Classes for all ages — from tiny tots to advanced adult movers.</p>
+        <span class="class-badge">All Ages</span>
+      </div>
+
+      <div class="class-card reveal">
+        <div class="class-icon-wrap ci-purple">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="class-name">Drama &amp; Speech</div>
+        <p class="class-desc">Trinity College London affiliated Speech &amp; Drama. Performance skills, confidence building, and accredited exams for kids and teens.</p>
+        <span class="class-badge">Accredited</span>
+      </div>
+
+      <div class="class-card reveal">
+        <div class="class-icon-wrap ci-gold">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        </div>
+        <div class="class-name">Music</div>
+        <p class="class-desc">Piano, Violin, Vocals, Drums, Saxophone, Trombone, Woodwind &amp; Brass, and Music Theory. Private and group lessons available.</p>
+        <span class="class-badge">All Instruments</span>
+      </div>
+
+      <div class="class-card reveal">
+        <div class="class-icon-wrap ci-pink">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+        </div>
+        <div class="class-name">Visual Arts</div>
+        <p class="class-desc">Drawing, painting and creative expression for all ages — from foundational skills to expressive abstract work with passionate artists.</p>
+        <span class="class-badge">Recreational &amp; Competitive</span>
+      </div>
+
+      <div class="class-card reveal">
+        <div class="class-icon-wrap ci-teal">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+        </div>
+        <div class="class-name">Pottery &amp; Clay</div>
+        <p class="class-desc">Hands-on wheel and hand-building clay work in our Canvas &amp; Clay Café. Perfect for relaxation, creativity, and learning a timeless art form.</p>
+        <span class="class-badge">Canvas &amp; Clay Café</span>
+      </div>
+
+      <div class="class-card reveal">
+        <div class="class-icon-wrap ci-green">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <div class="class-name">Flexinastix</div>
+        <p class="class-desc">Gymnastics-inspired flexibility and strength training blending acrobatics and dance. Builds confidence, coordination and physical fitness.</p>
+        <span class="class-badge">Kids &amp; Teens</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <div class="gallery-bg" id="gallery">
+    <div class="gallery-inner">
+      <div class="section-tag" style="color:var(--gold);">Our Creative Space</div>
+      <h2 class="section-title reveal">Life at The Studio</h2>
+      <p class="section-sub reveal">A glimpse into the creativity, community and joy that defines everything we do.</p>
+      <div class="gallery-grid" role="list" aria-label="Studio gallery">
+        <div class="gallery-card reveal" role="listitem"><img src="images/gallery-1.jpg" alt="Children in ballet and contemporary dance class with mirrored walls and wooden floors" loading="lazy"><div class="gallery-label">Dance Classes</div></div>
+        <div class="gallery-card reveal" role="listitem"><img src="images/gallery-2.jpg" alt="Adults painting on canvas at wooden tables in a cosy arts café evening" loading="lazy"><div class="gallery-label">Canvas &amp; Clay Café</div></div>
+        <div class="gallery-card reveal" role="listitem"><img src="images/gallery-3.jpg" alt="Young student playing piano with sheet music open in a music lesson" loading="lazy"><div class="gallery-label">Music Lessons</div></div>
+        <div class="gallery-card reveal" role="listitem"><img src="images/gallery-4.jpg" alt="Teenagers performing a drama scene under stage spotlight" loading="lazy"><div class="gallery-label">Drama Performances</div></div>
+        <div class="gallery-card reveal" role="listitem"><img src="images/gallery-5.jpg" alt="Close-up of hands shaping clay on a pottery wheel" loading="lazy"><div class="gallery-label">Pottery Workshop</div></div>
+        <div class="gallery-card reveal" role="listitem"><img src="images/gallery-6.jpg" alt="Children with facepainting laughing at a colourful birthday party" loading="lazy"><div class="gallery-label">Kids Events &amp; Parties</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reviews -->
+  <section class="section" aria-labelledby="reviews-title">
+    <div style="text-align:center;max-width:600px;margin:0 auto;">
+      <div class="section-tag">Community Love</div>
+      <h2 class="section-title reveal" id="reviews-title">What our community says</h2>
+    </div>
+    <div class="reviews-grid">
+
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"My daughter has been dancing at The Studio for two years. The instructors genuinely care — they've helped her build confidence on and off the stage. The end-of-year shows are incredible."</p>
+        <div class="reviewer">N.M.</div>
+        <div class="reviewer-role">Parent · Dance Academy</div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"We booked the Canvas &amp; Clay event for our team building day and it was an absolute hit. The whole team left relaxed, laughing and with something beautiful to take home. Highly recommend!"</p>
+        <div class="reviewer">S.K.</div>
+        <div class="reviewer-role">Corporate Client · Creative Events</div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"As You Wish organised my son's 7th birthday party and it was beyond everything we imagined. The character appearance, facepainting, and decor were spectacular. Every child had the best time!"</p>
+        <div class="reviewer">T.A.</div>
+        <div class="reviewer-role">Parent · Kids Party</div>
+      </div>
+
+    </div>
+    <div class="reveal" style="text-align:center;margin-top:2.5rem;">
+      <p style="font-size:.9rem;color:var(--muted);">1,891+ community members · 1,794 visits recorded on Facebook</p>
+      <a href="https://www.facebook.com/thestudiomilnerton" target="_blank" rel="noopener" style="display:inline-block;margin-top:.75rem;color:var(--coral);font-weight:600;font-size:.9rem;">See all reviews on Facebook →</a>
+    </div>
+  </section>
+
+  <!-- Enroll -->
+  <div class="enroll-bg" id="enroll">
+    <div class="enroll-inner">
+      <div class="section-tag" style="color:var(--gold);">Start Your Journey</div>
+      <h2 class="section-title reveal">Enroll or inquire today</h2>
+      <p class="section-sub reveal">Fill in the form and our team will get back to you within 24 hours to confirm your class, event or party booking. Spaces are limited — reserve yours now.</p>
+      <form class="enroll-form reveal" id="enrollForm" aria-label="Enrollment inquiry form" novalidate>
+        <div class="form-group">
+          <label for="fname">Your Name <span class="form-required" aria-label="required">*</span></label>
+          <input type="text" id="fname" name="name" required placeholder="e.g. Sarah Abrahams" autocomplete="name" minlength="2">
+        </div>
+        <div class="form-group">
+          <label for="fphone">Phone / WhatsApp <span class="form-required" aria-label="required">*</span></label>
+          <input type="tel" id="fphone" name="phone" required placeholder="+27 xx xxx xxxx" autocomplete="tel">
+        </div>
+        <div class="form-group">
+          <label for="femail">Email Address</label>
+          <input type="email" id="femail" name="email" placeholder="you@email.com" autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="fage">Student Age Range</label>
+          <select id="fage" name="age">
+            <option value="">Select age range…</option>
+            <option>3 – 5 years (Mini)</option>
+            <option>6 – 9 years (Junior)</option>
+            <option>10 – 13 years (Intermediate)</option>
+            <option>14 – 17 years (Teen)</option>
+            <option>18+ (Adult)</option>
+            <option>Group / Corporate</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label for="finterest">I'm interested in <span class="form-required" aria-label="required">*</span></label>
+          <select id="finterest" name="interest" required>
+            <option value="">Choose a class or service…</option>
+            <option>Dance (Ballet / Contemporary / Hip Hop / Acrobatics)</option>
+            <option>Drama &amp; Speech (Trinity College London)</option>
+            <option>Music (Piano / Violin / Vocals / Drums / Saxophone)</option>
+            <option>Visual Arts</option>
+            <option>Pottery &amp; Clay</option>
+            <option>Flexinastix</option>
+            <option>Canvas &amp; Clay Event / Corporate Team Building</option>
+            <option>Kids Party (As You Wish Events)</option>
+            <option>Creative Holiday Club / Aftercare</option>
+            <option>Just browsing — tell me more!</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label for="fmsg">Message (optional)</label>
+          <textarea id="fmsg" name="message" placeholder="Specific dates, questions, or requirements?"></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Send Inquiry via WhatsApp</button>
+        <p class="form-note">We'll reply within 24 hours. By submitting you agree to be contacted by The Studio via WhatsApp or email.</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <section class="section" id="contact" aria-labelledby="contact-title">
+    <div style="max-width:560px;margin-bottom:3rem;">
+      <div class="section-tag">Find Us</div>
+      <h2 class="section-title reveal" id="contact-title">Come say hello</h2>
+      <p class="section-sub reveal">We're on the first floor of the Albar Center in Milnerton. First time? Reach out on WhatsApp and we'll show you around.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-items">
+
+        <div class="contact-item reveal">
+          <div class="contact-item-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div>
+            <div class="contact-item-label">Address</div>
+            <div class="contact-item-value">First Floor, Albar Center<br>Corner of Koeberg Rd &amp; Zastron Rd<br>Milnerton, Cape Town</div>
+          </div>
+        </div>
+
+        <div class="contact-item reveal">
+          <div class="contact-item-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.35 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div>
+            <div class="contact-item-label">WhatsApp / Call</div>
+            <div class="contact-item-value"><a href="https://wa.me/27664572305?text=Hi%20The%20Studio!%20I'd%20like%20to%20find%20out%20more%20about%20your%20classes." aria-label="WhatsApp The Studio">(+27) 66 457 2305</a></div>
+          </div>
+        </div>
+
+        <div class="contact-item reveal">
+          <div class="contact-item-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div>
+            <div class="contact-item-label">Email</div>
+            <div class="contact-item-value"><a href="mailto:Info@thestudioza.co.za">Info@thestudioza.co.za</a></div>
+          </div>
+        </div>
+
+        <div class="contact-item reveal">
+          <div class="contact-item-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div>
+            <div class="contact-item-label">Operating Hours</div>
+            <div class="contact-item-value">
+              <table class="hours-table" aria-label="Operating hours">
+                <tr><td>Monday – Friday</td><td>9:00 AM – 7:00 PM</td></tr>
+                <tr><td>Saturday &amp; Sunday</td><td>9:00 AM – 12:00 PM</td></tr>
+                <tr><td>Admin Office</td><td>Mon–Fri 9 AM – 4 PM</td></tr>
+              </table>
+              <p style="font-size:.78rem;color:var(--muted);margin-top:.5rem;">Entrance by Appointment / Enrollment Only. Private Events bookable 8 AM – 10 PM on any available day.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="map-wrap reveal">
+        <iframe
+          src="https://maps.google.com/maps?q=Albar+Center+Corner+Koeberg+Zastron+Milnerton+Cape+Town&output=embed"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          title="The Studio location on Google Maps">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand-name">The Studio</div>
+        <p class="footer-brand-desc">Cape Town's creative hub for dance, music, drama, visual arts, pottery and events. Milnerton's home of imagination.</p>
+        <div class="footer-social" aria-label="Social media links">
+          <a href="https://www.facebook.com/thestudiomilnerton" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="rgba(255,255,255,0.7)"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/thestudioza" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@thestudioza_" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="rgba(255,255,255,0.7)"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.53V6.77a4.85 4.85 0 0 1-1.01-.08z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/watch?v=E3sTaye9C94" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="rgba(255,255,255,0.7)"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon fill="#1A1033" points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <ul class="footer-links" role="list">
+          <li><a href="#about">About The Studio</a></li>
+          <li><a href="#departments">Our Departments</a></li>
+          <li><a href="#classes">Classes</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#enroll">Enroll Now</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links" role="list">
+          <li><a href="https://wa.me/27664572305">(+27) 66 457 2305</a></li>
+          <li><a href="mailto:Info@thestudioza.co.za">Info@thestudioza.co.za</a></li>
+          <li style="color:rgba(255,255,255,.5);font-size:.875rem;line-height:1.6;">First Floor, Albar Center<br>Koeberg Rd &amp; Zastron Rd<br>Milnerton, Cape Town</li>
+        </ul>
+        <a href="https://wa.me/27664572305?text=Hi%20The%20Studio!%20I'd%20love%20to%20find%20out%20more." target="_blank" rel="noopener"
+           style="display:inline-flex;align-items:center;gap:.5rem;margin-top:1.5rem;background:var(--gold);color:var(--dark);font-weight:700;font-size:.85rem;padding:.6rem 1.2rem;border-radius:50px;">
+          WhatsApp Us
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 The Studio ZA · Milnerton, Cape Town · <a href="https://thestudioza.co.za" style="color:var(--gold);">thestudioza.co.za</a></p>
+      <p style="font-size:.75rem;"><a href="https://jotform.com/inbox/222682063892562/6453165368614351295" target="_blank" rel="noopener" style="color:var(--gold);">Academy Enrollment Form 2026</a></p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a class="wa-float" href="https://wa.me/27664572305?text=Hi%20The%20Studio!%20I'd%20like%20to%20find%20out%20more%20about%20your%20classes%20and%20events." target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.025.504 3.935 1.384 5.609L0 24l6.545-1.379A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.273-1.527l-.379-.225-3.927.828.842-3.836-.245-.39A9.818 9.818 0 1 1 12 21.818z"/></svg>
+  </a>
+
+  <!-- Mobile Sticky CTA -->
+  <a class="mobile-cta" href="#enroll" aria-label="Enroll in a class at The Studio">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    Enroll in a Class
+  </a>
+
+  <!-- Exit Intent Popup -->
+  <div class="popup-overlay" id="popupOverlay" role="dialog" aria-modal="true" aria-labelledby="popup-title">
+    <div class="popup">
+      <button class="popup-close" id="popupClose" aria-label="Close offer">✕</button>
+      <div class="popup-icon" aria-hidden="true">🎨</div>
+      <h3 class="popup-title" id="popup-title">Your first class is free</h3>
+      <p class="popup-text">Try any class at The Studio — Dance, Drama, Music, Art or Pottery — completely free. No commitment, no pressure. Just come and discover what moves you.</p>
+      <a href="https://wa.me/27664572305?text=Hi!%20I'd%20like%20to%20claim%20my%20free%20first%20class%20at%20The%20Studio." target="_blank" rel="noopener" class="popup-cta" onclick="document.getElementById('popupOverlay').classList.remove('open')">Claim My Free Class</a>
+      <span class="popup-skip" id="popupSkip" tabindex="0" role="button">No thanks, I'll skip</span>
+    </div>
+  </div>
+
+  <script>
+    // ── Hero canvas mesh ──
+    (function () {
+      const canvas = document.getElementById('hero-canvas');
+      const ctx = canvas.getContext('2d');
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      const blobs = [
+        { x:.15, y:.3,  r:.5,  color:'#E85D4A', vx:.00025, vy:.0003  },
+        { x:.75, y:.2,  r:.45, color:'#F4A928', vx:-.00015,vy:.00025 },
+        { x:.5,  y:.75, r:.55, color:'#2BAD9C', vx:.0003,  vy:-.00015},
+        { x:.85, y:.8,  r:.35, color:'#6B46C1', vx:-.0002, vy:-.0002 },
+      ];
+
+      function draw() {
+        const w = canvas.width  = canvas.offsetWidth;
+        const h = canvas.height = canvas.offsetHeight;
+        ctx.fillStyle = '#1A1033';
+        ctx.fillRect(0, 0, w, h);
+        ctx.globalCompositeOperation = 'lighter';
+        for (const b of blobs) {
+          const g = ctx.createRadialGradient(b.x*w, b.y*h, 0, b.x*w, b.y*h, b.r*Math.min(w,h));
+          g.addColorStop(0, b.color + 'AA');
+          g.addColorStop(1, b.color + '00');
+          ctx.fillStyle = g;
+          ctx.fillRect(0, 0, w, h);
+          if (!reduced) {
+            b.x += b.vx; b.y += b.vy;
+            if (b.x < -.1 || b.x > 1.1) b.vx *= -1;
+            if (b.y < -.1 || b.y > 1.1) b.vy *= -1;
+          }
+        }
+        ctx.globalCompositeOperation = 'source-over';
+        if (!reduced) requestAnimationFrame(draw);
+      }
+
+      draw();
+      let rt;
+      window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(draw, 100); });
+    })();
+
+    // ── GSAP hero entrance ──
+    function heroIn() {
+      if (typeof gsap === 'undefined') return;
+      gsap.from('.hero-eyebrow', { opacity:0, y:20, duration:.8, ease:'power3.out', delay:.2 });
+      gsap.from('.hero-title',   { opacity:0, y:40, duration:1.2, ease:'power3.out', delay:.4 });
+      gsap.from('.hero-sub',     { opacity:0, y:30, duration:1,   ease:'power3.out', delay:.8 });
+      gsap.from('.hero-ctas',    { opacity:0, y:20, duration:.8,  ease:'power3.out', delay:1.1 });
+    }
+    typeof gsap !== 'undefined' ? heroIn() : setTimeout(heroIn, 1800);
+
+    // ── Scroll reveal ──
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: .1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // ── Hamburger ──
+    const burger = document.getElementById('hamburger');
+    const menu   = document.getElementById('mobileMenu');
+    burger.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open);
+    });
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      menu.classList.remove('open'); burger.setAttribute('aria-expanded','false');
+    }));
+
+    // ── Theme toggle ──
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const t = document.documentElement.getAttribute('data-theme');
+      document.documentElement.setAttribute('data-theme', t === 'dark' ? 'light' : 'dark');
+    });
+
+    // ── Exit popup ──
+    const overlay = document.getElementById('popupOverlay');
+    let shown = false;
+    document.addEventListener('mouseleave', e => {
+      if (!shown && e.clientY <= 0) { overlay.classList.add('open'); shown = true; }
+    });
+    setTimeout(() => { if (!shown) { overlay.classList.add('open'); shown = true; } }, 40000);
+    const closePopup = () => overlay.classList.remove('open');
+    document.getElementById('popupClose').addEventListener('click', closePopup);
+    document.getElementById('popupSkip').addEventListener('click', closePopup);
+    document.getElementById('popupSkip').addEventListener('keydown', e => { if (e.key==='Enter'||e.key===' ') closePopup(); });
+    overlay.addEventListener('click', e => { if (e.target === overlay) closePopup(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
+
+    // ── Enrollment form → WhatsApp ──
+    document.getElementById('enrollForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const name     = fd.get('name') || '';
+      const phone    = fd.get('phone') || '';
+      const interest = fd.get('interest') || '';
+      const age      = fd.get('age') || '';
+      const msg      = fd.get('message') || '';
+      if (!name || !phone || !interest) {
+        alert('Please fill in your name, phone number and area of interest.');
+        return;
+      }
+      const text = encodeURIComponent(
+        `Hi The Studio! I'd like to enroll.\n\nName: ${name}\nPhone: ${phone}${age ? '\nAge range: '+age : ''}\nInterested in: ${interest}${msg ? '\nMessage: '+msg : ''}`
+      );
+      window.open(`https://wa.me/27664572305?text=${text}`, '_blank');
+    });
+  </script>
+</body>
+</html>
