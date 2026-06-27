@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="pt" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sanigo — Laboratório de Análises Clínicas | Praia, Cabo Verde</title>
+  <meta name="description" content="Sanigo — Saúde em Movimento. Laboratório de análises clínicas em Achada Santo António, Praia, Cabo Verde. Hemograma, check-up preventivo, testes rápidos e muito mais. Ligue +238 992 07 50.">
+  <meta property="og:title" content="Sanigo — Saúde em Movimento">
+  <meta property="og:description" content="Laboratório de Análises Clínicas em Praia, Cabo Verde. Resultados precisos, atendimento próximo. Achada Santo António.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_CV">
+  <!-- GA4: replace G-XXXXXXXXXX with your Measurement ID -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ─── Tokens ─── */
+    :root {
+      --dark:    #091D1D;
+      --teal:    #0B6B5C;
+      --teal-l:  #14A68A;
+      --gold:    #F0A500;
+      --cream:   #F5F2EC;
+      --card:    #FFFFFF;
+      --text:    #192828;
+      --text-2:  #4A6565;
+      --muted:   #7A9A9A;
+      --border:  #D5DDD9;
+      --nav-h:   72px;
+      --r:       14px;
+      --r-sm:    8px;
+      --max-w:   1280px;
+      --shadow:  0 2px 20px rgba(9,29,29,.09);
+      --tr:      0.3s ease;
+    }
+    [data-theme="dark"] {
+      --cream:  #0D2020;
+      --card:   #112828;
+      --text:   #E8F0EE;
+      --text-2: #96B8B2;
+      --muted:  #6B9090;
+      --border: #1E3838;
+      --shadow: 0 2px 20px rgba(0,0,0,.3);
+    }
+
+    /* ─── Reset ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; scroll-padding-top: var(--nav-h); }
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      background: var(--cream); color: var(--text);
+      overflow-x: hidden; line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    button, input, select, textarea { font-family: inherit; }
+
+    /* ─── Skip link ─── */
+    .skip-link {
+      position: absolute; top: -100%; left: 1rem;
+      background: var(--teal-l); color: #fff;
+      padding: .5rem 1rem; border-radius: var(--r-sm);
+      font-weight: 600; font-size: .875rem; z-index: 9999;
+    }
+    .skip-link:focus { top: 1rem; }
+    :focus-visible { outline: 2px solid var(--teal-l); outline-offset: 3px; }
+
+    /* ─── Reduced motion ─── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      .hero-eyebrow, .hero-title, .hero-sub, .hero-actions { opacity: 1 !important; transform: none !important; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+    }
+
+    /* ─── Scroll reveal ─── */
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity .85s cubic-bezier(.16,1,.3,1), transform .85s cubic-bezier(.16,1,.3,1);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal:nth-child(2) { transition-delay: .1s; }
+    .reveal:nth-child(3) { transition-delay: .2s; }
+    .reveal:nth-child(4) { transition-delay: .05s; }
+    .reveal:nth-child(5) { transition-delay: .15s; }
+    .reveal:nth-child(6) { transition-delay: .25s; }
+
+    /* ═══════ NAV ═══════ */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 clamp(1.5rem, 5vw, 4rem); z-index: 1000;
+      transition: background var(--tr), border-color var(--tr), box-shadow var(--tr);
+    }
+    .nav--solid {
+      background: rgba(245,242,236,.95);
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 1px 12px rgba(9,29,29,.06);
+    }
+    [data-theme="dark"] .nav--solid { background: rgba(13,32,32,.95); }
+
+    .nav-logo { display: flex; align-items: baseline; gap: .55rem; }
+    .nav-logo-name {
+      font-size: 1.35rem; font-weight: 800; color: #fff;
+      letter-spacing: -.025em; transition: color var(--tr);
+    }
+    .nav--solid .nav-logo-name { color: var(--text); }
+    .nav-logo-dot { color: var(--teal-l); }
+    .nav-logo-tag {
+      font-size: .6rem; font-weight: 500; color: rgba(255,255,255,.5);
+      letter-spacing: .18em; text-transform: uppercase;
+      transition: color var(--tr);
+    }
+    .nav--solid .nav-logo-tag { color: var(--muted); }
+
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+    @media(max-width:900px) { .nav-links { display: none; } }
+    .nav-links a {
+      font-size: .72rem; font-weight: 500; color: rgba(255,255,255,.7);
+      letter-spacing: .1em; text-transform: uppercase; transition: color .2s;
+    }
+    .nav--solid .nav-links a { color: var(--text-2); }
+    .nav-links a:hover,
+    .nav--solid .nav-links a:hover { color: var(--teal-l); }
+
+    .nav-right { display: flex; align-items: center; gap: .875rem; }
+    .btn-theme {
+      width: 40px; height: 40px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.25); background: transparent;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,.7); transition: all .2s;
+    }
+    .nav--solid .btn-theme { border-color: var(--border); color: var(--text-2); }
+    .btn-theme:hover { background: rgba(255,255,255,.1); color: #fff; }
+    .nav--solid .btn-theme:hover { background: var(--border); color: var(--text); }
+
+    .btn-nav-cta {
+      font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+      color: #fff; border: 1px solid rgba(255,255,255,.4);
+      padding: .6rem 1.4rem; border-radius: 4px; background: transparent;
+      cursor: pointer; transition: all .25s; min-height: 44px;
+      display: inline-flex; align-items: center;
+    }
+    .btn-nav-cta:hover { background: rgba(255,255,255,.1); border-color: #fff; }
+    .nav--solid .btn-nav-cta { color: var(--teal-l); border-color: var(--teal-l); }
+    .nav--solid .btn-nav-cta:hover { background: var(--teal-l); color: #fff; }
+
+    .hamburger {
+      display: none; background: none; border: none; cursor: pointer;
+      width: 44px; height: 44px; flex-direction: column;
+      justify-content: center; gap: 6px; align-items: center;
+    }
+    @media(max-width:900px) { .hamburger { display: flex; } }
+    .hamburger span {
+      display: block; width: 22px; height: 1.5px;
+      background: #fff; border-radius: 2px; transition: all .3s;
+    }
+    .nav--solid .hamburger span { background: var(--text); }
+
+    .mobile-menu {
+      position: fixed; top: var(--nav-h); left: 0; right: 0;
+      background: var(--card); padding: 1.5rem clamp(1.5rem,5vw,4rem) 2rem;
+      display: none; flex-direction: column; z-index: 999;
+      border-bottom: 1px solid var(--border); box-shadow: var(--shadow);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: .8rem; font-weight: 500; color: var(--text-2);
+      text-transform: uppercase; letter-spacing: .1em;
+      padding: .9rem 0; border-bottom: 1px solid var(--border);
+      transition: color .2s;
+    }
+    .mobile-menu a:last-child { border-bottom: none; color: var(--teal-l); }
+    .mobile-menu a:hover { color: var(--teal-l); }
+
+    /* ═══════ HERO ═══════ */
+    .hero {
+      position: relative; margin-top: var(--nav-h);
+      height: calc(100svh - var(--nav-h)); min-height: 560px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: clip; background: var(--dark);
+    }
+    #hero-canvas {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+    }
+    .hero-content {
+      position: relative; z-index: 1; text-align: center;
+      padding: 0 clamp(1.5rem, 5vw, 4rem); max-width: 800px;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .68rem; font-weight: 600;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: var(--teal-l); margin-bottom: 1.5rem;
+    }
+    .hero-eyebrow-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--gold);
+    }
+    .hero-title {
+      font-size: clamp(3rem, min(9vw, 9.5vh), 7rem);
+      font-weight: 800; color: #fff;
+      letter-spacing: -.03em; line-height: 1.0; margin-bottom: 1.25rem;
+    }
+    .hero-title em { font-style: normal; color: var(--teal-l); }
+    .hero-sub {
+      font-size: clamp(.95rem, 2.2vw, 1.1rem);
+      color: rgba(255,255,255,.62); line-height: 1.75;
+      max-width: 560px; margin: 0 auto 2.5rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    .btn-primary {
+      font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      background: var(--teal-l); color: #fff;
+      padding: .9rem 2.25rem; border-radius: 4px; border: none; cursor: pointer;
+      transition: all .25s; min-height: 48px;
+      display: inline-flex; align-items: center; gap: .5rem;
+    }
+    .btn-primary:hover { background: #10c9a2; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(20,166,138,.35); }
+    .btn-secondary {
+      font-size: .8rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+      color: rgba(255,255,255,.8); border: 1px solid rgba(255,255,255,.3);
+      padding: .9rem 2.25rem; border-radius: 4px; background: transparent;
+      cursor: pointer; transition: all .25s; min-height: 48px;
+      display: inline-flex; align-items: center;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.65); }
+
+    /* ═══════ SHARED ═══════ */
+    .section { padding: clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem); }
+    .container { max-width: var(--max-w); margin: 0 auto; }
+    .section-label {
+      font-size: .68rem; font-weight: 600; letter-spacing: .22em;
+      text-transform: uppercase; color: var(--teal-l); margin-bottom: .75rem;
+    }
+    .section-title {
+      font-size: clamp(1.75rem,3.5vw,2.75rem); font-weight: 800;
+      letter-spacing: -.02em; line-height: 1.15;
+      color: var(--text); margin-bottom: 1rem;
+    }
+    .section-sub {
+      font-size: 1.05rem; color: var(--text-2); line-height: 1.75; max-width: 580px;
+    }
+    .section-head { margin-bottom: 3.5rem; }
+    .section-head.centered { text-align: center; }
+    .section-head.centered .section-sub { margin: 0 auto; }
+
+    /* ═══════ ABOUT ═══════ */
+    .about { background: var(--cream); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+    }
+    @media(max-width:768px) { .about-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+    .about-quote {
+      font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 700;
+      color: var(--text); line-height: 1.4; letter-spacing: -.01em;
+      border-left: 4px solid var(--teal-l); padding-left: 1.5rem;
+      margin-bottom: 1.5rem; font-style: italic;
+    }
+    .about-text { font-size: 1.02rem; color: var(--text-2); line-height: 1.8; margin-bottom: 1.25rem; }
+    .stats-row { display: flex; gap: 2.5rem; margin-top: 2rem; flex-wrap: wrap; }
+    .stat-num {
+      font-size: 2.25rem; font-weight: 800; color: var(--teal);
+      letter-spacing: -.03em; line-height: 1;
+    }
+    .stat-label {
+      font-size: .72rem; font-weight: 500; color: var(--muted);
+      letter-spacing: .1em; text-transform: uppercase; margin-top: .2rem;
+    }
+    .about-visual {
+      aspect-ratio: 4/3; border-radius: var(--r);
+      background: linear-gradient(135deg, var(--teal) 0%, var(--dark) 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .about-visual::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 30%, rgba(20,166,138,.4) 0%, transparent 65%);
+    }
+    .about-visual-inner { position: relative; z-index: 1; text-align: center; color: #fff; padding: 2rem; }
+    .about-visual-num {
+      font-size: clamp(3rem,7vw,5rem); font-weight: 800;
+      line-height: 1; letter-spacing: -.04em;
+    }
+    .about-visual-desc {
+      font-size: .75rem; color: rgba(255,255,255,.55);
+      letter-spacing: .18em; text-transform: uppercase; margin-top: .5rem;
+    }
+    .about-visual-cta {
+      display: inline-flex; align-items: center; gap: .4rem;
+      margin-top: 1.25rem; font-size: .75rem; font-weight: 600;
+      color: var(--teal-l); letter-spacing: .08em; text-transform: uppercase;
+    }
+
+    /* ═══════ SERVICES ═══════ */
+    .services { background: var(--card); }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 1.5rem;
+    }
+    .service-card {
+      background: var(--cream); border-radius: var(--r);
+      padding: 2rem 1.75rem; border: 1px solid var(--border);
+      transition: all var(--tr); position: relative; overflow: hidden;
+    }
+    [data-theme="dark"] .service-card { background: var(--dark); }
+    .service-card::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--teal-l));
+      transform: scaleX(0); transform-origin: left; transition: transform .4s ease;
+    }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(9,29,29,.12); border-color: var(--teal-l); }
+    .service-card:hover::after { transform: scaleX(1); }
+    .service-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: linear-gradient(135deg, rgba(11,107,92,.14), rgba(20,166,138,.09));
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.25rem; color: var(--teal-l);
+    }
+    .service-name { font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: .5rem; }
+    .service-desc { font-size: .88rem; color: var(--text-2); line-height: 1.65; }
+
+    /* ═══════ GALLERY ═══════ */
+    .gallery { background: var(--cream); }
+    .gallery-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      grid-template-rows: repeat(2,220px); gap: 1rem;
+    }
+    @media(max-width:640px) {
+      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3,180px); }
+    }
+    .gallery-card {
+      border-radius: var(--r-sm); overflow: hidden; position: relative;
+      background: linear-gradient(135deg, var(--teal) 0%, var(--dark) 100%);
+    }
+    .gallery-card img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; transition: transform .6s ease;
+    }
+    .gallery-card:hover img { transform: scale(1.06); }
+    .gallery-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: .75rem 1rem;
+      background: linear-gradient(to top, rgba(9,29,29,.8) 0%, transparent 100%);
+      font-size: .72rem; font-weight: 600;
+      color: rgba(255,255,255,.9); letter-spacing: .08em; text-transform: uppercase;
+    }
+
+    /* ═══════ REVIEWS ═══════ */
+    .reviews { background: var(--card); }
+    .reviews-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 1.5rem;
+    }
+    .review-card {
+      background: var(--cream); border-radius: var(--r);
+      padding: 2rem; border: 1px solid var(--border);
+    }
+    [data-theme="dark"] .review-card { background: #0D2222; }
+    .stars { display: flex; gap: 3px; margin-bottom: .75rem; color: var(--gold); }
+    .review-text {
+      font-size: .93rem; color: var(--text-2);
+      line-height: 1.75; font-style: italic; margin-bottom: 1.25rem;
+    }
+    .review-author { font-weight: 700; font-size: .85rem; color: var(--text); }
+
+    /* ═══════ BOOKING ═══════ */
+    .booking { background: var(--dark); }
+    .booking-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: start;
+    }
+    @media(max-width:768px) { .booking-inner { grid-template-columns: 1fr; gap: 2.5rem; } }
+    .booking-info .section-label { color: var(--teal-l); }
+    .booking-info .section-title { color: #fff; }
+    .booking-info .section-sub { color: rgba(255,255,255,.58); max-width: none; }
+    .booking-feats { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+    .booking-feat {
+      display: flex; align-items: center; gap: .75rem;
+      font-size: .9rem; color: rgba(255,255,255,.65);
+    }
+    .booking-feat-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal-l); flex-shrink: 0; }
+    .booking-form {
+      background: var(--card); border-radius: var(--r); padding: 2.5rem;
+    }
+    [data-theme="dark"] .booking-form { background: #0D2828; border: 1px solid rgba(255,255,255,.07); }
+    .form-title { font-size: 1.15rem; font-weight: 700; color: var(--text); margin-bottom: 1.75rem; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media(max-width:500px) { .form-grid { grid-template-columns: 1fr; } }
+    .form-group { display: flex; flex-direction: column; gap: .35rem; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-label {
+      font-size: .72rem; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--text-2);
+    }
+    .form-control {
+      padding: .75rem 1rem; border: 1px solid var(--border);
+      border-radius: var(--r-sm); background: var(--cream); color: var(--text);
+      font-size: .9rem; transition: border-color .2s; min-height: 44px;
+    }
+    [data-theme="dark"] .form-control { background: #162B2B; border-color: rgba(255,255,255,.11); }
+    .form-control:focus { border-color: var(--teal-l); outline: none; }
+    .form-control::placeholder { color: var(--muted); }
+    textarea.form-control { min-height: 100px; resize: vertical; }
+    .form-error { font-size: .75rem; color: #E85D4A; display: none; }
+    .btn-submit {
+      width: 100%; margin-top: 1.25rem;
+      font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      background: var(--teal-l); color: #fff;
+      padding: 1rem; border-radius: 4px; border: none; cursor: pointer;
+      transition: all .25s; min-height: 52px;
+    }
+    .btn-submit:hover { background: #10c9a2; }
+    .form-success {
+      display: none; text-align: center; padding: 2rem;
+      color: var(--teal-l); font-weight: 600; font-size: .95rem;
+    }
+
+    /* ═══════ FAQ ═══════ */
+    .faq { background: var(--cream); }
+    .faq-list { max-width: 720px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q {
+      width: 100%; text-align: left; background: none; border: none;
+      padding: 1.25rem 0; display: flex; justify-content: space-between;
+      align-items: center; font-size: .98rem; font-weight: 600;
+      color: var(--text); cursor: pointer; gap: 1rem; transition: color .2s;
+    }
+    .faq-q:hover { color: var(--teal-l); }
+    .faq-icon {
+      width: 22px; height: 22px; flex-shrink: 0; border-radius: 50%;
+      border: 1.5px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      transition: all .3s; color: var(--text-2);
+    }
+    .faq-item.open .faq-icon { background: var(--teal-l); border-color: var(--teal-l); color: #fff; transform: rotate(45deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height .4s ease; }
+    .faq-item.open .faq-a { max-height: 200px; }
+    .faq-a-inner { padding: 0 0 1.25rem; font-size: .93rem; color: var(--text-2); line-height: 1.75; }
+
+    /* ═══════ CONTACT ═══════ */
+    .contact { background: var(--card); }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1.5fr;
+      gap: 4rem; align-items: start;
+    }
+    @media(max-width:768px) { .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+    .contact-items { display: flex; flex-direction: column; gap: 1.75rem; }
+    .contact-item { display: flex; gap: 1rem; align-items: flex-start; }
+    .contact-icon {
+      width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0;
+      background: linear-gradient(135deg, rgba(11,107,92,.14), rgba(20,166,138,.08));
+      display: flex; align-items: center; justify-content: center; color: var(--teal-l);
+    }
+    .c-label {
+      font-size: .68rem; font-weight: 600; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: .25rem;
+    }
+    .c-val { font-size: .95rem; color: var(--text); font-weight: 500; line-height: 1.6; }
+    .c-val a { color: var(--teal-l); }
+    .hours-table { width: 100%; border-collapse: collapse; margin-top: .35rem; }
+    .hours-table td { padding: .25rem 0; font-size: .875rem; color: var(--text-2); }
+    .hours-table td:first-child { font-weight: 600; color: var(--text); width: 140px; }
+    .map-wrap { border-radius: var(--r); overflow: hidden; aspect-ratio: 16/9; border: 1px solid var(--border); }
+    .map-wrap iframe { width: 100%; height: 100%; border: 0; }
+
+    /* ═══════ FOOTER ═══════ */
+    .footer { background: var(--dark); padding: 3rem clamp(1.5rem,5vw,4rem) 2rem; }
+    .footer-inner {
+      max-width: var(--max-w); margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      padding-bottom: 2rem; margin-bottom: 1.5rem;
+    }
+    .footer-logo { font-size: 1.3rem; font-weight: 800; color: #fff; letter-spacing: -.02em; }
+    .footer-logo span { color: var(--teal-l); }
+    .footer-tagline { font-size: .75rem; color: rgba(255,255,255,.35); margin-top: .35rem; letter-spacing: .08em; }
+    .footer-nav { display: flex; gap: 2rem; flex-wrap: wrap; }
+    .footer-nav a {
+      font-size: .75rem; font-weight: 500; color: rgba(255,255,255,.45);
+      text-transform: uppercase; letter-spacing: .1em; transition: color .2s;
+    }
+    .footer-nav a:hover { color: var(--teal-l); }
+    .footer-social { display: flex; gap: .75rem; }
+    .footer-social a {
+      width: 36px; height: 36px; border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.12);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,.45); transition: all .2s;
+    }
+    .footer-social a:hover { border-color: var(--teal-l); color: var(--teal-l); }
+    .footer-copy {
+      max-width: var(--max-w); margin: 0 auto;
+      font-size: .75rem; color: rgba(255,255,255,.3);
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem;
+    }
+
+    /* ═══════ FLOATING ═══════ */
+    .wa-btn {
+      position: fixed; bottom: 5.5rem; right: 1.5rem;
+      width: 56px; height: 56px; border-radius: 50%; background: #25D366;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; box-shadow: 0 4px 22px rgba(37,211,102,.4);
+      z-index: 900; transition: transform .2s;
+    }
+    .wa-btn:hover { transform: scale(1.1); }
+
+    .sticky-cta {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: var(--teal); color: #fff; text-align: center;
+      padding: 1rem 2rem; font-size: .8rem; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      z-index: 800; display: flex; align-items: center;
+      justify-content: center; gap: .5rem; min-height: 56px;
+      transition: background .2s;
+    }
+    @media(min-width:901px) { .sticky-cta { display: none; } }
+    .sticky-cta:hover { background: var(--teal-l); }
+
+    /* ═══════ POPUP ═══════ */
+    .popup-overlay {
+      position: fixed; inset: 0; background: rgba(9,29,29,.72);
+      z-index: 9000; display: none; align-items: center;
+      justify-content: center; padding: 1.5rem;
+    }
+    .popup-overlay.active { display: flex; }
+    .popup {
+      background: var(--card); border-radius: var(--r);
+      padding: 2.5rem; max-width: 440px; width: 100%;
+      position: relative; text-align: center;
+    }
+    .popup-close {
+      position: absolute; top: 1rem; right: 1rem;
+      width: 32px; height: 32px; border-radius: 50%;
+      border: 1px solid var(--border); background: none;
+      cursor: pointer; color: var(--muted);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; line-height: 1; transition: all .2s;
+    }
+    .popup-close:hover { background: var(--teal-l); color: #fff; border-color: var(--teal-l); }
+    .popup-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--teal-l), var(--teal));
+      color: #fff; border-radius: 100px;
+      padding: .35rem 1rem; font-size: .68rem;
+      font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; margin-bottom: 1rem;
+    }
+    .popup-title {
+      font-size: 1.4rem; font-weight: 800; color: var(--text);
+      margin-bottom: .5rem; letter-spacing: -.02em;
+    }
+    .popup-sub {
+      font-size: .9rem; color: var(--text-2);
+      line-height: 1.65; margin-bottom: 1.75rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- SVG sprite -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-drop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c0 0-8 8-8 13a8 8 0 0016 0c0-5-8-13-8-13z"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></symbol>
+    <symbol id="i-flask" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M9 3v8l-4.5 8.5A1 1 0 005.4 21h13.2a1 1 0 00.9-1.5L15 11V3"/></symbol>
+    <symbol id="i-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+    <symbol id="i-micro" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18H4a2 2 0 01-2-2v-1h20v1a2 2 0 01-2 2h-2M6 18v2a2 2 0 002 2h8a2 2 0 002-2v-2M3 11V9a1 1 0 011-1h7V4a1 1 0 011-1h2a1 1 0 011 1v4h1a1 1 0 011 1v2H3z"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82 19.79 19.79 0 01.06 1.2 2 2 0 012 .02h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path fill="currentColor" d="M12 0C5.373 0 0 5.373 0 12c0 2.108.55 4.086 1.514 5.808L.057 23.5l5.844-1.532A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.787 9.787 0 01-4.99-1.367l-.358-.212-3.468.909.924-3.378-.233-.374A9.775 9.775 0 012.182 12c0-5.423 4.394-9.818 9.818-9.818 5.423 0 9.818 4.395 9.818 9.818 0 5.424-4.395 9.818-9.818 9.818z"/></symbol>
+    <symbol id="i-fb" viewBox="0 0 24 24"><path fill="currentColor" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></symbol>
+  </svg>
+
+  <a href="#main" class="skip-link">Saltar para o conteúdo principal</a>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Navegação principal">
+    <a href="#" class="nav-logo" aria-label="Sanigo — página inicial">
+      <span class="nav-logo-name">Sanigo<span class="nav-logo-dot">.</span></span>
+      <span class="nav-logo-tag">Saúde em Movimento</span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#galeria">Galeria</a></li>
+      <li><a href="#agendar">Agendar</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="btn-theme" id="theme-toggle" aria-label="Alternar modo escuro">
+        <svg aria-hidden="true" focusable="false" width="16" height="16"><use id="theme-icon" href="#i-moon"/></svg>
+      </button>
+      <a href="#agendar" class="btn-nav-cta">Agendar Exames</a>
+      <button class="hamburger" id="hamburger" aria-controls="mobile-menu" aria-expanded="false" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <nav class="mobile-menu" id="mobile-menu" aria-hidden="true" aria-label="Menu móvel">
+    <a href="#sobre">Sobre Nós</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#galeria">Galeria</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contacto">Contacto</a>
+    <a href="#agendar">Agendar Exames</a>
+  </nav>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span class="hero-eyebrow-dot" aria-hidden="true"></span>
+          Laboratório Certificado &middot; Praia, Cabo Verde
+        </div>
+        <h1 class="hero-title" id="hero-title">
+          Saúde<br><em>em Movimento</em>
+        </h1>
+        <p class="hero-sub">
+          Resultados precisos, atendimento próximo. O laboratório de referência em Achada Santo António para análises clínicas, check-ups preventivos e testes rápidos.
+        </p>
+        <div class="hero-actions">
+          <a href="#agendar" class="btn-primary">
+            <svg aria-hidden="true" focusable="false" width="16" height="16"><use href="#i-flask"/></svg>
+            Agendar Exames
+          </a>
+          <a href="#servicos" class="btn-secondary">Ver Serviços</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about" id="sobre" aria-labelledby="sobre-h">
+      <div class="container">
+        <div class="about-grid">
+          <div>
+            <p class="section-label reveal">Sobre o Sanigo</p>
+            <blockquote class="about-quote reveal">
+              "Quem tem boa saúde é rico sem saber."
+            </blockquote>
+            <p class="about-text reveal">
+              O Sanigo é o laboratório de análises clínicas de referência em Praia, Cabo Verde. Há anos servimos a comunidade de Achada Santo António com rigor técnico, equipamentos modernos e um atendimento que respeita cada utente — porque a saúde é o nosso compromisso mais sério.
+            </p>
+            <p class="about-text reveal">
+              Com uma equipa técnica qualificada e processos certificados, garantimos resultados fiáveis para que os seus médicos possam tomar as melhores decisões clínicas. Da análise de rotina ao check-up completo, estamos consigo em cada passo da sua saúde.
+            </p>
+            <div class="stats-row">
+              <div class="stat reveal">
+                <div class="stat-num">8K+</div>
+                <div class="stat-label">Seguidores</div>
+              </div>
+              <div class="stat reveal">
+                <div class="stat-num">6+</div>
+                <div class="stat-label">Tipos de Exame</div>
+              </div>
+              <div class="stat reveal">
+                <div class="stat-num">24h</div>
+                <div class="stat-label">Resultados</div>
+              </div>
+            </div>
+          </div>
+          <div class="about-visual reveal">
+            <div class="about-visual-inner">
+              <div class="about-visual-num">+238</div>
+              <div class="about-visual-desc">992 07 50</div>
+              <a href="tel:+2389920750" class="about-visual-cta">
+                Ligar agora &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section services" id="servicos" aria-labelledby="servicos-h">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-label">Os Nossos Serviços</p>
+          <h2 class="section-title" id="servicos-h">Análises para cada necessidade</h2>
+          <p class="section-sub">Da rotina à urgência, cobrimos as principais análises clínicas com tecnologia moderna e resultados em tempo útil.</p>
+        </div>
+        <div class="services-grid">
+          <div class="service-card reveal">
+            <div class="service-icon">
+              <svg aria-hidden="true" focusable="false" width="22" height="22"><use href="#i-drop"/></svg>
+            </div>
+            <div class="service-name">Hemograma Completo</div>
+            <div class="service-desc">Análise detalhada das células sanguíneas — eritrócitos, leucócitos e plaquetas — para diagnóstico de anemia, infecções e distúrbios hematológicos.</div>
+          </div>
+          <div class="service-card reveal">
+            <div class="service-icon">
+              <svg aria-hidden="true" focusable="false" width="22" height="22"><use href="#i-heart"/></svg>
+            </div>
+            <div class="service-name">Perfil Bioquímico</div>
+            <div class="service-desc">Avaliação de glicemia, colesterol total, HDL, LDL, triglicéridos e função hepática para monitorizar a saúde cardiovascular e metabólica.</div>
+          </div>
+          <div class="service-card reveal">
+            <div class="service-icon">
+              <svg aria-hidden="true" focusable="false" width="22" height="22"><use href="#i-flask"/></svg>
+            </div>
+            <div class="service-name">Análise de Urina</div>
+            <div class="service-desc">Exame completo de urina com sedimento urinário para detecção de infecções urinárias, diabetes, problemas renais e outras condições.</div>
+          </div>
+          <div class="service-card reveal">
+            <div class="service-icon">
+              <svg aria-hidden="true" focusable="false" width="22" height="22"><use href="#i-zap"/></svg>
+            </div>
+            <div class="service-name">Testes Rápidos</div>
+            <div class="service-desc">Diagnóstico rápido e fiável para HIV, Malária, Hepatite B e C, Dengue e COVID-19. Resultados em minutos com alta precisão.</div>
+          </div>
+          <div class="service-card reveal">
+            <div class="service-icon">
+              <svg aria-hidden="true" focusable="false" width="22" height="22"><use href="#i-shield"/></svg>
+            </div>
+            <div class="service-name">Check-Up Preventivo</div>
+            <div class="service-desc">Painel completo de exames de rotina anual para avaliação geral do estado de saúde — ideal para prevenção e detecção precoce de doenças.</div>
+          </div>
+          <div class="service-card reveal">
+            <div class="service-icon">
+              <svg aria-hidden="true" focusable="false" width="22" height="22"><use href="#i-micro"/></svg>
+            </div>
+            <div class="service-name">Microbiologia</div>
+            <div class="service-desc">Culturas bacterianas, antibiogramas e diagnóstico de infecções respiratórias, urinárias e gastrointestinais com identificação precisa do agente.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="section gallery" id="galeria" aria-labelledby="galeria-h">
+      <div class="container">
+        <div class="section-head centered reveal">
+          <p class="section-label">Galeria</p>
+          <h2 class="section-title" id="galeria-h">O nosso espaço e equipa</h2>
+          <p class="section-sub">Um ambiente moderno, limpo e acolhedor — preparado para prestar os melhores cuidados laboratoriais à comunidade de Praia.</p>
+        </div>
+        <div class="gallery-grid" role="list" aria-label="Galeria do laboratório Sanigo">
+          <div class="gallery-card reveal" role="listitem">
+            <img src="images/gallery-1.jpg" alt="Recepção moderna e acolhedora do laboratório Sanigo" loading="lazy">
+            <div class="gallery-label">Recepção</div>
+          </div>
+          <div class="gallery-card reveal" role="listitem">
+            <img src="images/gallery-2.jpg" alt="Técnico de laboratório a analisar amostras sanguíneas com pipeta" loading="lazy">
+            <div class="gallery-label">Análises</div>
+          </div>
+          <div class="gallery-card reveal" role="listitem">
+            <img src="images/gallery-3.jpg" alt="Equipamento moderno de análise clínica no laboratório" loading="lazy">
+            <div class="gallery-label">Equipamento</div>
+          </div>
+          <div class="gallery-card reveal" role="listitem">
+            <img src="images/gallery-4.jpg" alt="Profissional de saúde a realizar colheita de sangue a utente" loading="lazy">
+            <div class="gallery-label">Colheita</div>
+          </div>
+          <div class="gallery-card reveal" role="listitem">
+            <img src="images/gallery-5.jpg" alt="Sala de espera confortável e limpa do laboratório" loading="lazy">
+            <div class="gallery-label">Sala de Espera</div>
+          </div>
+          <div class="gallery-card reveal" role="listitem">
+            <img src="images/gallery-6.jpg" alt="Equipa técnica do Sanigo sorrindo em ambiente laboratorial" loading="lazy">
+            <div class="gallery-label">A Nossa Equipa</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="section reviews" id="testemunhos" aria-labelledby="testemunhos-h">
+      <div class="container">
+        <div class="section-head centered reveal">
+          <p class="section-label">Testemunhos</p>
+          <h2 class="section-title" id="testemunhos-h">O que dizem os nossos utentes</h2>
+        </div>
+        <div class="reviews-grid">
+          <div class="review-card reveal">
+            <div class="stars" aria-label="5 estrelas">
+              <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="review-text">"O Sanigo é sem dúvida o melhor laboratório de Praia. Resultados rápidos, atendimento muito cuidado e os técnicos explicam tudo com paciência. Recomendo a toda a gente."</p>
+            <div class="review-author">A. Monteiro</div>
+          </div>
+          <div class="review-card reveal">
+            <div class="stars" aria-label="5 estrelas">
+              <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="review-text">"Faço os meus exames de rotina aqui há vários anos. Sempre me sinto bem atendido, os resultados chegam em tempo útil e a qualidade é excelente. Muito profissionais."</p>
+            <div class="review-author">M. T. Silva</div>
+          </div>
+          <div class="review-card reveal">
+            <div class="stars" aria-label="5 estrelas">
+              <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="review-text">"Laboratório de confiança em Praia. Atendimento simpático, preços justos e um espaço muito limpo e organizado. A minha família toda vem aqui. Muito recomendado!"</p>
+            <div class="review-author">J. Cardoso</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOOKING -->
+    <section class="section booking" id="agendar" aria-labelledby="agendar-h">
+      <div class="container">
+        <div class="booking-inner">
+          <div class="booking-info reveal">
+            <p class="section-label">Marcação de Exames</p>
+            <h2 class="section-title" id="agendar-h">Agende os seus exames hoje</h2>
+            <p class="section-sub">Preencha o formulário e entraremos em contacto para confirmar a sua marcação. Resposta em menos de 2 horas durante o horário de funcionamento.</p>
+            <div class="booking-feats">
+              <div class="booking-feat"><span class="booking-feat-dot" aria-hidden="true"></span>Resultados disponíveis em 24 horas</div>
+              <div class="booking-feat"><span class="booking-feat-dot" aria-hidden="true"></span>Não precisa de médico de família para a maioria dos exames</div>
+              <div class="booking-feat"><span class="booking-feat-dot" aria-hidden="true"></span>Informe-se sobre as condições de jejum ao agendar</div>
+              <div class="booking-feat"><span class="booking-feat-dot" aria-hidden="true"></span>Aceitamos seguros de saúde e pagamento directo</div>
+            </div>
+          </div>
+          <div class="booking-form reveal" role="form" aria-labelledby="form-title">
+            <p class="form-title" id="form-title">Preencha os seus dados</p>
+            <form id="booking-form" novalidate>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label" for="f-nome">Nome Completo *</label>
+                  <input class="form-control" type="text" id="f-nome" name="nome" placeholder="Ex: Maria Silva" required autocomplete="name">
+                  <span class="form-error" id="e-nome" role="alert">Por favor insira o seu nome.</span>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="f-tel">Telefone *</label>
+                  <input class="form-control" type="tel" id="f-tel" name="tel" placeholder="+238 9XX XX XX" required autocomplete="tel">
+                  <span class="form-error" id="e-tel" role="alert">Por favor insira o seu número.</span>
+                </div>
+                <div class="form-group full">
+                  <label class="form-label" for="f-exame">Tipo de Exame *</label>
+                  <select class="form-control" id="f-exame" name="exame" required>
+                    <option value="">Seleccione um exame...</option>
+                    <option value="Hemograma Completo">Hemograma Completo</option>
+                    <option value="Perfil Bioquímico">Perfil Bioquímico</option>
+                    <option value="Análise de Urina">Análise de Urina</option>
+                    <option value="Testes Rápidos (HIV / Malária / Hepatite)">Testes Rápidos</option>
+                    <option value="Check-Up Preventivo">Check-Up Preventivo</option>
+                    <option value="Microbiologia">Microbiologia</option>
+                    <option value="Outro exame">Outro</option>
+                  </select>
+                  <span class="form-error" id="e-exame" role="alert">Por favor seleccione um tipo de exame.</span>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="f-data">Data Preferida</label>
+                  <input class="form-control" type="date" id="f-data" name="data">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="f-hora">Hora Preferida</label>
+                  <select class="form-control" id="f-hora" name="hora">
+                    <option value="">Indiferente</option>
+                    <option value="07h30 – 09h00">07h30 – 09h00</option>
+                    <option value="09h00 – 11h00">09h00 – 11h00</option>
+                    <option value="11h00 – 13h00">11h00 – 13h00</option>
+                    <option value="14h00 – 16h00">14h00 – 16h00</option>
+                  </select>
+                </div>
+                <div class="form-group full">
+                  <label class="form-label" for="f-obs">Observações</label>
+                  <textarea class="form-control" id="f-obs" name="obs" placeholder="Informação adicional, médico solicitante, etc."></textarea>
+                </div>
+              </div>
+              <button type="submit" class="btn-submit">Enviar Pedido via WhatsApp</button>
+            </form>
+            <div class="form-success" id="form-success" role="status" aria-live="polite">
+              <svg aria-hidden="true" focusable="false" width="36" height="36" style="margin:0 auto .75rem;display:block;color:var(--teal-l)"><use href="#i-check"/></svg>
+              Pedido enviado com sucesso! Entraremos em contacto em breve.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq" id="faq" aria-labelledby="faq-h">
+      <div class="container">
+        <div class="section-head centered reveal">
+          <p class="section-label">Perguntas Frequentes</p>
+          <h2 class="section-title" id="faq-h">Ficou com dúvidas?</h2>
+        </div>
+        <div class="faq-list reveal" role="list">
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false">
+              Preciso de marcação para fazer análises?
+              <span class="faq-icon" aria-hidden="true"><svg focusable="false" width="12" height="12"><use href="#i-plus"/></svg></span>
+            </button>
+            <div class="faq-a"><p class="faq-a-inner">Não é obrigatório, mas recomendamos marcação prévia para evitar esperas. Para testes rápidos e urgentes, atendemos sem marcação durante o horário normal.</p></div>
+          </div>
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false">
+              Devo estar em jejum para os exames?
+              <span class="faq-icon" aria-hidden="true"><svg focusable="false" width="12" height="12"><use href="#i-plus"/></svg></span>
+            </button>
+            <div class="faq-a"><p class="faq-a-inner">Depende do tipo de análise. Para hemograma simples não é necessário. Para perfil bioquímico, glicemia e colesterol recomendamos 8 a 12 horas de jejum. Confirme sempre ao agendar.</p></div>
+          </div>
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false">
+              Quanto tempo demora a receber os resultados?
+              <span class="faq-icon" aria-hidden="true"><svg focusable="false" width="12" height="12"><use href="#i-plus"/></svg></span>
+            </button>
+            <div class="faq-a"><p class="faq-a-inner">Os testes rápidos têm resultados imediatos (15–30 minutos). As análises de sangue e urina estão prontas normalmente em 24 horas. Microbiologia e culturas podem demorar 48 a 72 horas.</p></div>
+          </div>
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false">
+              Como posso receber os meus resultados?
+              <span class="faq-icon" aria-hidden="true"><svg focusable="false" width="12" height="12"><use href="#i-plus"/></svg></span>
+            </button>
+            <div class="faq-a"><p class="faq-a-inner">Os resultados podem ser levantados presencialmente ou enviados por mensagem quando disponíveis. Confirme a sua preferência no momento da colheita.</p></div>
+          </div>
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false">
+              Qual é o horário de funcionamento?
+              <span class="faq-icon" aria-hidden="true"><svg focusable="false" width="12" height="12"><use href="#i-plus"/></svg></span>
+            </button>
+            <div class="faq-a"><p class="faq-a-inner">Funcionamos de segunda a sexta das 07h30 às 17h00, e ao sábado das 07h30 às 12h00. Ao domingo estamos encerrados. Recomendamos a colheita de manhã cedo, especialmente para exames em jejum.</p></div>
+          </div>
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false">
+              Aceitam seguros de saúde?
+              <span class="faq-icon" aria-hidden="true"><svg focusable="false" width="12" height="12"><use href="#i-plus"/></svg></span>
+            </button>
+            <div class="faq-a"><p class="faq-a-inner">Sim, trabalhamos com os principais seguros de saúde disponíveis em Cabo Verde. Contacte-nos previamente para confirmar a cobertura do seu plano para os exames pretendidos.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contacto" aria-labelledby="contacto-h">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-label">Contacto &amp; Localização</p>
+          <h2 class="section-title" id="contacto-h">Venha visitar-nos</h2>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-items">
+            <div class="contact-item reveal">
+              <div class="contact-icon" aria-hidden="true">
+                <svg focusable="false" width="20" height="20"><use href="#i-map"/></svg>
+              </div>
+              <div>
+                <p class="c-label">Morada</p>
+                <p class="c-val">Rua Uccla 34, Achada Santo António<br>Praia, Cabo Verde</p>
+              </div>
+            </div>
+            <div class="contact-item reveal">
+              <div class="contact-icon" aria-hidden="true">
+                <svg focusable="false" width="20" height="20"><use href="#i-phone"/></svg>
+              </div>
+              <div>
+                <p class="c-label">Telefone</p>
+                <p class="c-val">
+                  <a href="tel:+2389920750">+238 992 07 50</a><br>
+                  <a href="tel:+2385212348">+238 521 23 48</a>
+                </p>
+              </div>
+            </div>
+            <div class="contact-item reveal">
+              <div class="contact-icon" aria-hidden="true">
+                <svg focusable="false" width="20" height="20"><use href="#i-clock"/></svg>
+              </div>
+              <div>
+                <p class="c-label">Horário de Funcionamento</p>
+                <table class="hours-table" aria-label="Horário do laboratório">
+                  <tbody>
+                    <tr><td>Segunda – Sexta</td><td>07h30 – 17h00</td></tr>
+                    <tr><td>Sábado</td><td>07h30 – 12h00</td></tr>
+                    <tr><td>Domingo</td><td>Encerrado</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="map-wrap reveal">
+            <iframe
+              title="Localização do Sanigo em Praia, Cabo Verde"
+              src="https://maps.google.com/maps?q=Achada+Santo+Antonio+Praia+Cabo+Verde&output=embed"
+              loading="lazy"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Sanigo<span>.</span></div>
+        <p class="footer-tagline">Saúde em Movimento &middot; Praia, Cabo Verde</p>
+      </div>
+      <nav class="footer-nav" aria-label="Links de rodapé">
+        <a href="#sobre">Sobre</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#agendar">Agendar</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <div class="footer-social" aria-label="Redes sociais">
+        <a href="https://www.facebook.com/sanigocv/" target="_blank" rel="noopener noreferrer" aria-label="Facebook do Sanigo">
+          <svg aria-hidden="true" focusable="false" width="16" height="16"><use href="#i-fb"/></svg>
+        </a>
+        <a href="https://wa.me/2389920750" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp do Sanigo">
+          <svg aria-hidden="true" focusable="false" width="16" height="16"><use href="#i-wa"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-copy">
+      <span>&copy; 2025 Sanigo — Laboratório de Análises Clínicas. Todos os direitos reservados.</span>
+      <span>Achada Santo António, Praia, Cabo Verde</span>
+    </div>
+  </footer>
+
+  <!-- WhatsApp float -->
+  <a href="https://wa.me/2389920750?text=Ol%C3%A1+Sanigo!+Gostaria+de+agendar+um+exame."
+     class="wa-btn" target="_blank" rel="noopener noreferrer" aria-label="Contactar via WhatsApp">
+    <svg aria-hidden="true" focusable="false" width="26" height="26"><use href="#i-wa"/></svg>
+  </a>
+
+  <!-- Sticky CTA (mobile only) -->
+  <a href="#agendar" class="sticky-cta">
+    <svg aria-hidden="true" focusable="false" width="16" height="16"><use href="#i-flask"/></svg>
+    Agendar Exames
+  </a>
+
+  <!-- Exit intent popup -->
+  <div class="popup-overlay" id="popup" role="dialog" aria-modal="true" aria-labelledby="popup-title" aria-describedby="popup-desc">
+    <div class="popup">
+      <button class="popup-close" id="popup-close" aria-label="Fechar">&times;</button>
+      <div class="popup-badge">Sanigo</div>
+      <h2 class="popup-title" id="popup-title">Antes de sair...</h2>
+      <p class="popup-sub" id="popup-desc">Sabia que pode agendar os seus exames directamente via WhatsApp? Rápido, simples, sem esperas.</p>
+      <a href="https://wa.me/2389920750?text=Ol%C3%A1+Sanigo!+Gostaria+de+agendar+um+exame."
+         class="btn-primary" target="_blank" rel="noopener noreferrer"
+         style="width:100%;justify-content:center;font-size:.8rem;">
+        <svg aria-hidden="true" focusable="false" width="16" height="16"><use href="#i-wa"/></svg>
+        Agendar via WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- GA4: replace G-XXXXXXXXXX with your Measurement ID -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script>
+    /* ─── Hero canvas — molecular particle system ─── */
+    (function() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const canvas = document.getElementById('hero-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let pts = [];
+
+      function resize() {
+        canvas.width  = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+      }
+
+      function Pt() {
+        this.x  = Math.random() * canvas.width;
+        this.y  = Math.random() * canvas.height;
+        this.vx = (Math.random() - .5) * .48;
+        this.vy = (Math.random() - .5) * .48;
+        this.r  = Math.random() * 2.2 + .9;
+        this.c  = ['rgba(20,166,138,.75)','rgba(240,165,0,.52)','rgba(255,255,255,.28)'][Math.random() * 3 | 0];
+      }
+
+      function init() { resize(); pts = Array.from({length: 68}, () => new Pt()); }
+
+      function frame() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < pts.length; i++) {
+          const p = pts[i];
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0 || p.x > canvas.width)  p.vx *= -1;
+          if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, 6.283);
+          ctx.fillStyle = p.c;
+          ctx.fill();
+          for (let j = i + 1; j < pts.length; j++) {
+            const q = pts[j];
+            const dx = p.x - q.x, dy = p.y - q.y;
+            const d  = Math.sqrt(dx*dx + dy*dy);
+            if (d < 125) {
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y);
+              ctx.strokeStyle = 'rgba(20,166,138,' + (.17 * (1 - d / 125)) + ')';
+              ctx.lineWidth = .75;
+              ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(frame);
+      }
+
+      window.addEventListener('resize', resize, {passive: true});
+      init(); frame();
+    })();
+
+    /* ─── GSAP hero entrance ─── */
+    const _sel = '.hero-eyebrow,.hero-title,.hero-sub,.hero-actions';
+    const _fb  = setTimeout(() => {
+      document.querySelectorAll(_sel).forEach(el => {
+        el.style.transition = 'opacity .6s ease, transform .6s ease';
+        el.style.opacity = '1'; el.style.transform = 'none';
+      });
+    }, 1800);
+
+    window.addEventListener('load', () => {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { clearTimeout(_fb); return; }
+      if (typeof gsap === 'undefined') return;
+      clearTimeout(_fb);
+      gsap.set(_sel, { y: 28, opacity: 0 });
+      gsap.timeline({delay: .2})
+        .to('.hero-eyebrow', {opacity:1, y:0, duration:.8,  ease:'power2.out'})
+        .to('.hero-title',   {opacity:1, y:0, duration:1.0, ease:'power2.out'}, '-=.45')
+        .to('.hero-sub',     {opacity:1, y:0, duration:.85, ease:'power2.out'}, '-=.5')
+        .to('.hero-actions', {opacity:1, y:0, duration:.75, ease:'power2.out'}, '-=.4');
+    });
+
+    /* ─── Nav scroll ─── */
+    const nav = document.getElementById('nav');
+    const onScroll = () => nav.classList.toggle('nav--solid', window.scrollY > 18);
+    window.addEventListener('scroll', onScroll, {passive: true});
+    onScroll();
+
+    /* ─── Mobile menu ─── */
+    const burger = document.getElementById('hamburger');
+    const mmenu  = document.getElementById('mobile-menu');
+    burger.addEventListener('click', () => {
+      const open = mmenu.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open);
+      mmenu.setAttribute('aria-hidden', !open);
+    });
+    mmenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mmenu.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+      mmenu.setAttribute('aria-hidden', 'true');
+    }));
+
+    /* ─── Dark/light mode ─── */
+    const themeBtn  = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    let dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const applyTheme = () => {
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+      themeIcon.setAttribute('href', dark ? '#i-sun' : '#i-moon');
+      themeBtn.setAttribute('aria-label', dark ? 'Mudar para modo claro' : 'Mudar para modo escuro');
+    };
+    applyTheme();
+    themeBtn.addEventListener('click', () => { dark = !dark; applyTheme(); });
+
+    /* ─── Scroll reveal ─── */
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, {threshold: .12});
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    /* ─── Active nav link ─── */
+    const secEls  = document.querySelectorAll('section[id]');
+    const navAnch = document.querySelectorAll('.nav-links a');
+    const aio = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navAnch.forEach(a => {
+            a.removeAttribute('aria-current');
+            if (a.getAttribute('href') === '#' + e.target.id) a.setAttribute('aria-current', 'true');
+          });
+        }
+      });
+    }, {threshold: .35});
+    secEls.forEach(s => aio.observe(s));
+
+    /* ─── FAQ accordion ─── */
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const open = item.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open);
+      });
+    });
+
+    /* ─── Booking form → WhatsApp ─── */
+    document.getElementById('booking-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      let valid = true;
+      [['f-nome','e-nome'],['f-tel','e-tel'],['f-exame','e-exame']].forEach(([id, eid]) => {
+        const el  = document.getElementById(id);
+        const err = document.getElementById(eid);
+        if (!el.value.trim()) { err.style.display = 'block'; valid = false; }
+        else err.style.display = 'none';
+      });
+      if (!valid) { document.getElementById(
+        ['f-nome','f-tel','f-exame'].find(id => !document.getElementById(id).value.trim())
+      ).focus(); return; }
+
+      const nome  = document.getElementById('f-nome').value.trim();
+      const tel   = document.getElementById('f-tel').value.trim();
+      const exame = document.getElementById('f-exame').value;
+      const data  = document.getElementById('f-data').value;
+      const hora  = document.getElementById('f-hora').value;
+      const obs   = document.getElementById('f-obs').value.trim();
+
+      let msg = 'Olá Sanigo! Gostaria de agendar um exame.%0A%0A';
+      msg += '*Nome:* ' + encodeURIComponent(nome) + '%0A';
+      msg += '*Telefone:* ' + encodeURIComponent(tel) + '%0A';
+      msg += '*Exame:* ' + encodeURIComponent(exame) + '%0A';
+      if (data) msg += '*Data preferida:* ' + encodeURIComponent(data) + '%0A';
+      if (hora) msg += '*Hora preferida:* ' + encodeURIComponent(hora) + '%0A';
+      if (obs)  msg += '*Observações:* ' + encodeURIComponent(obs);
+
+      window.open('https://wa.me/2389920750?text=' + msg, '_blank');
+      this.style.display = 'none';
+      const s = document.getElementById('form-success');
+      s.style.display = 'block';
+    });
+
+    /* ─── Exit intent popup ─── */
+    const popup  = document.getElementById('popup');
+    const pClose = document.getElementById('popup-close');
+    let shown = false, prevFocus;
+
+    const show = () => {
+      if (shown) return;
+      shown = true; prevFocus = document.activeElement;
+      popup.classList.add('active'); pClose.focus();
+    };
+    const hide = () => {
+      popup.classList.remove('active');
+      if (prevFocus) prevFocus.focus();
+    };
+
+    document.addEventListener('mouseleave', e => { if (e.clientY <= 0) show(); });
+    setTimeout(show, 45000);
+    pClose.addEventListener('click', hide);
+    popup.addEventListener('click', e => { if (e.target === popup) hide(); });
+    popup.addEventListener('keydown', e => {
+      if (e.key === 'Escape') { hide(); return; }
+      if (e.key === 'Tab') {
+        const f = [...popup.querySelectorAll('button,a,input,select,[tabindex]:not([tabindex="-1"])')];
+        if (e.shiftKey) { if (document.activeElement === f[0]) { e.preventDefault(); f[f.length-1].focus(); } }
+        else { if (document.activeElement === f[f.length-1]) { e.preventDefault(); f[0].focus(); } }
+      }
+    });
+  </script>
+</body>
+</html>
