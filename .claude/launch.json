@@ -1,0 +1,11 @@
+﻿{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Jireh Roadside",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "3030", "--directory", "Jireh Roadside Assistance Website"],
+      "port": 3030
+    }
+  ]
+}
