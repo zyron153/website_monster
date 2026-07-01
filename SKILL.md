@@ -83,10 +83,9 @@ If Instagram is unavailable or private, fall back to the niche defaults below.
 
 **MotionSites.ai component reference** — always run this step before generating any HTML:
 
-Tell the user:
-> *"Before I generate the site, head to **[motionsites.ai](https://motionsites.ai/)**, browse the **[business category]** section, and pick 1–2 hero or section styles you like — I'll adapt the chosen look into the build."*
+Before generate the site, head to **[motionsites.ai](https://motionsites.ai/)**, browse the sections, and pick 1–2 hero or section styles you think most suitable to the  [business category] and adapt the chosen look into the build."*
 
-Wait for the user's choice, then use it as the foundation for the hero animation style, card layouts, and section transitions in Step 3.
+Do not Wait for the user's choice, decide and then use it as the foundation for the hero animation style, card layouts, and section transitions in Step 3.
 
 ---
 
