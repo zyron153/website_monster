@@ -106,11 +106,13 @@ Before generating any code, also decide:
 - **Animation pace**: fast + energetic (fitness, food) vs. slow + elegant (legal, spa)
 - **Automation**: which niche widget from the table in Step 5
 
+Once the design decisions above are set, invoke the **`/design`** skill to generate the design token system (color variables, typography scale, spacing) for this business's niche and tone. Use its output as the CSS custom properties foundation for Step 3.
+
 ---
 
 ### Step 3 — GENERATE
 
-Use the `web-artifacts-builder` skill to produce a complete React + Tailwind CSS site. Populate every field with real data from Step 1 — no lorem ipsum anywhere.
+Invoke the **`/ui-styling`** skill to scaffold the component architecture, accessibility patterns, and utility class system for the interface. Then build the complete production `index.html` using the design tokens from Step 2 and the component patterns from `/ui-styling`. Populate every field with real data from Step 1 — no lorem ipsum anywhere.
 
 **Required sections:**
 
